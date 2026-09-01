@@ -21,6 +21,8 @@ Install with `-IncludeGlobalInstructions` to activate the defaults across tasks.
 
 The imported Vercel skills cover React best practices, UI guideline reviews and Vercel CLI operations. They remain direct upstream copies; use only the guidance relevant to the current task.
 
+`hexagonal-architecture` ports the useful boundary and dependency-injection guidance from the personal Claude skill to Python and TypeScript/Next.js. It keeps business rules testable without imposing placeholder layers. The shared global instructions require dedicated validation agents separate from implementation authors, plus a read-only reviewer, using the testing skills below. Read the [testing workflow and definition-of-done example](skills/fullstack-delivery/references/testing-workflow.md) for frontend/backend test selection and application CI guidance.
+
 ## Original skill sources
 
 These links open the original GitHub skill directories at the exact versions included here. Copies live under `third-party/skills/`; source revisions and licence notices are recorded in [third-party/sources.json](third-party/sources.json).
@@ -32,8 +34,12 @@ These links open the original GitHub skill directories at the exact versions inc
 | Vercel React Best Practices | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/063bee94c3f4df8453406c830b0a7df0f2860278/skills/react-best-practices) |
 | Web Design Guidelines | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/063bee94c3f4df8453406c830b0a7df0f2860278/skills/web-design-guidelines) |
 | Vercel CLI | [vercel/vercel](https://github.com/vercel/vercel/tree/e06cc643cec6a47bd9344af7f4589c736d95ed15/skills/vercel-cli) |
+| Test-Driven Development | [obra/superpowers](https://github.com/obra/superpowers/tree/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/skills/test-driven-development) |
+| Verification Before Completion | [obra/superpowers](https://github.com/obra/superpowers/tree/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/skills/verification-before-completion) |
+| Requesting Code Review | [obra/superpowers](https://github.com/obra/superpowers/tree/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/skills/requesting-code-review) |
+| Playwright Best Practices | [currents-dev/playwright-best-practices-skill](https://github.com/currents-dev/playwright-best-practices-skill/tree/283d5cbc5d11aac1abda058b16ad22c317d54dc0/playwright-best-practices) |
 
-`fullstack-delivery` and `personal-skill-library` are original skills maintained in this repository.
+`fullstack-delivery`, `hexagonal-architecture` and `personal-skill-library` are original skills maintained in this repository. No full Superpowers plugin or automatic test-healing loop is installed. Upstream testing skills remain unchanged; the global instructions preserve acceptance criteria, require independent execution and prevent unnecessary repeat runs.
 
 ## Set up another Windows machine
 

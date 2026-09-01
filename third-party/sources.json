@@ -55,6 +55,51 @@
       "local_path": "third-party/skills/vercel-cli",
       "installation": null,
       "local_changes": []
+    },
+    {
+      "name": "test-driven-development",
+      "mode": "copy",
+      "source_url": "https://github.com/obra/superpowers",
+      "source_path": "skills/test-driven-development",
+      "revision": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797",
+      "license": "MIT; upstream root notice at third-party/licenses/superpowers-LICENSE.",
+      "local_path": "third-party/skills/test-driven-development",
+      "installation": null,
+      "local_changes": []
+    },
+    {
+      "name": "verification-before-completion",
+      "mode": "copy",
+      "source_url": "https://github.com/obra/superpowers",
+      "source_path": "skills/verification-before-completion",
+      "revision": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797",
+      "license": "MIT; upstream root notice at third-party/licenses/superpowers-LICENSE.",
+      "local_path": "third-party/skills/verification-before-completion",
+      "installation": null,
+      "local_changes": []
+    },
+    {
+      "name": "requesting-code-review",
+      "mode": "copy",
+      "source_url": "https://github.com/obra/superpowers",
+      "source_path": "skills/requesting-code-review",
+      "revision": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797",
+      "license": "MIT; upstream root notice at third-party/licenses/superpowers-LICENSE.",
+      "local_path": "third-party/skills/requesting-code-review",
+      "installation": null,
+      "local_changes": []
+    },
+    {
+      "name": "playwright-best-practices",
+      "mode": "copy",
+      "source_url": "https://github.com/currents-dev/playwright-best-practices-skill",
+      "source_path": "playwright-best-practices",
+      "revision": "283d5cbc5d11aac1abda058b16ad22c317d54dc0",
+      "license": "MIT; upstream root notice at third-party/licenses/currents-playwright-LICENSE.md.",
+      "local_path": "third-party/skills/playwright-best-practices",
+      "installation": null,
+      "local_changes": [],
+      "upstream_notes": "Seven relative-link occurrences in secondary guides omit sibling-folder prefixes at this revision. Resolve through the main SKILL.md reference map: targets exist under debugging/error-testing.md, browser-apis/service-workers.md, core/assertions-waiting.md and core/fixtures-hooks.md. Imported files are unchanged."
     }
   ]
 }

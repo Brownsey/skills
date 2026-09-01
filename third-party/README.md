@@ -11,3 +11,5 @@ Read imported instructions and inspect executable helpers before installing or r
 Upstream Ponytail includes `argument-hint` in its frontmatter. The built-in skill-creator validator rejects this extra field; it is retained to preserve the original. Validate its YAML, name, description and references separately rather than silently modifying upstream metadata.
 
 `web-design-guidelines` fetches a live upstream guideline document when used. Its copied skill is pinned; that remote document can change independently.
+
+The pinned Playwright skill has several secondary-guide links missing sibling-folder prefixes. Their target files exist; use the main `SKILL.md` reference map to locate them. The source record documents this upstream limitation, and the copies remain unchanged.

@@ -22,6 +22,12 @@ Run two workers in parallel once the scaffold and contract are ready:
 - You own shared files, dependencies, integration, deployment and final checks.
 Use disjoint file ownership and no nested workers.
 
+Define done through observable acceptance criteria and use test-first checks.
+After implementation, use separate frontend/backend validation agents for the
+affected surfaces, then a separate read-only reviewer of the settled code/tests.
+Validators may add missing tests in assigned files but return production defects
+to the implementation owner. Required failing tests must not be skipped or weakened.
+
 This request authorises implementing the brief and deploying to the target above.
 Deploy a runnable scaffold early. Connect the first real frontend/backend flow
 early, then finish required behaviour, verification and handoff.

@@ -21,7 +21,7 @@ All profiles support real persistence, authentication and external integrations 
 
 ## Brief to plan
 
-1. Preserve the original brief and supplied repository. Extract mandatory requirements and a concrete acceptance check for each. Keep optional features separate; do not add speculative scope while refining the prompt.
+1. Preserve the original brief and supplied repository. Extract mandatory requirements and define done for each: observable success, relevant failure/permission cases, test layer, check command and owner. Expected results come from the brief rather than the generated implementation. Keep optional features separate; do not add speculative scope while refining the prompt.
 2. Clarify only decisions that block correct work. Record reversible assumptions and proceed within the authorised scope. If asked only to plan or optimise a prompt, deliver that artifact without starting implementation or deployment.
 3. Follow the provided stack. When free choice applies, prefer the user's familiar stack; the baseline here is Next.js App Router, TypeScript, React UI and Route Handlers in one Vercel project. Use version-matched docs and retain the dependency lockfile.
 4. Define the shared API contract before splitting work: methods, paths, input/output types, status codes, error shapes, IDs, validation and persistence semantics. Keep shared types free of server-only imports. Concrete request/response examples are useful; writing the entire implementation in the plan is not.
@@ -36,8 +36,8 @@ Use a lead and two workers when the user requests parallel work, tools are avail
 | Owner | Scope |
 | --- | --- |
 | Lead | Scaffold, shared API/types, package files and lockfile, framework config, integration, deployment and final verification |
-| Frontend | Named pages, components, UI styles, client API calls, loading/empty/error states and frontend checks |
-| Backend | Named API routes, server validation, business logic, required storage/migrations and backend checks |
+| Frontend | Named pages, components, UI styles, client API calls, loading/empty/error states and local tests |
+| Backend | Named API routes, server validation, business logic, required storage/migrations and local tests |
 
 Assign disjoint file lists for the actual app. A broad `app/` or `lib/` assignment can overlap; avoid it. Only the lead changes shared files or dependencies. Route contract changes through the lead and notify both workers before using them.
 
@@ -46,6 +46,14 @@ Give each worker its relevant requirements, profile, contract, owned files, assu
 Frontend fixtures may unblock UI work behind the agreed API boundary. Label them as temporary and replace them with the real backend before delivery. Integrate the first real user journey early, then expand required behaviour.
 
 In a shared workspace, workers do not independently commit, reset, stash, change branches or run competing production builds. The lead coordinates shared build outputs and dependency installs. If using worktrees, establish the integration method before dispatch. Review diffs and test combined behaviour rather than accepting worker success claims alone.
+
+## Independent validation
+
+Apply the dedicated validation-agent gate from the shared global instructions. After implementation, allocate separate frontend and backend validators for the affected surfaces; these must be distinct from the implementation authors. Run them sequentially when slots or test resources are shared. Give them the original acceptance criteria and contract, not just the implementation summary.
+
+Validators run the required checks and may add missing tests in assigned test files. Production fixes return to the implementation owner. Verify an integrated journey against the real backend and required persistence, then use `requesting-code-review` for a separate read-only assessment of the settled code and tests. Recheck affected behavior after fixes; a green mocked suite or a skipped acceptance case is insufficient.
+
+When available, use `test-driven-development`, `playwright-best-practices` and `verification-before-completion` for their relevant roles. Use `hexagonal-architecture` for meaningful business boundaries. See [testing workflow](references/testing-workflow.md) when selecting test layers, defining done or configuring repeatable application checks.
 
 ## Deploy and verify
 
