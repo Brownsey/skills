@@ -21,6 +21,20 @@ Install with `-IncludeGlobalInstructions` to activate the defaults across tasks.
 
 The imported Vercel skills cover React best practices, UI guideline reviews and Vercel CLI operations. They remain direct upstream copies; use only the guidance relevant to the current task.
 
+## Original skill sources
+
+These links open the original GitHub skill directories at the exact versions included here. Copies live under `third-party/skills/`; source revisions and licence notices are recorded in [third-party/sources.json](third-party/sources.json).
+
+| Skill | Original GitHub source |
+| --- | --- |
+| Caveman | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/df2ccd85c94ec3c8289cb62ac020d241ccfb0c60/skills/caveman) |
+| Ponytail | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/2ed6c52c9d7e5e56942508591085fd45dea277d3/skills/ponytail) |
+| Vercel React Best Practices | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/063bee94c3f4df8453406c830b0a7df0f2860278/skills/react-best-practices) |
+| Web Design Guidelines | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/063bee94c3f4df8453406c830b0a7df0f2860278/skills/web-design-guidelines) |
+| Vercel CLI | [vercel/vercel](https://github.com/vercel/vercel/tree/e06cc643cec6a47bd9344af7f4589c736d95ed15/skills/vercel-cli) |
+
+`fullstack-delivery` and `personal-skill-library` are original skills maintained in this repository.
+
 ## Set up another Windows machine
 
 Install Git and Codex, and make sure Git can access your GitHub account. Clone this repository into a convenient local folder, then open PowerShell in that clone:
@@ -81,6 +95,8 @@ Keep application-specific conventions in the application's own repository. Keep 
 The repository stores reproducible definitions and instructions. Each device installs its own programs and authenticates separately. `setup/install.ps1` installs skills and optional shared instructions only; it does not apply MCP configuration or install CLI programs.
 
 Use `setup/check-tools.ps1` to see which listed commands are available and how to install missing ones. Use GitHub CLI for repository, pull request and workflow operations; normal Git push/pull can continue using Git Credential Manager. Follow [CLI setup](cli/README.md) on each device.
+
+Tool sources: [GitHub CLI on GitHub](https://github.com/cli/cli), [Vercel CLI on GitHub](https://github.com/vercel/vercel), and [official Vercel MCP setup](https://vercel.com/docs/agent-resources/vercel-mcp).
 
 For MCP servers, maintain selected definitions in `mcp/servers.toml`, then apply the relevant server entries to the device's Codex config using `mcp/README.md`. Vercel is the selected server; each device needs its own configuration and OAuth consent.
 
