@@ -1,0 +1,16 @@
+# Local experiments and generated files
+.local/
+.tmp/
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
