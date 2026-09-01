@@ -1,3 +1,35 @@
 {
-  "skills": []
+  "skills": [
+    {
+      "name": "caveman",
+      "mode": "copy",
+      "source_url": "https://github.com/JuliusBrussee/caveman",
+      "source_path": "skills/caveman",
+      "revision": "df2ccd85c94ec3c8289cb62ac020d241ccfb0c60",
+      "license": "MIT for the copied skill; upstream notice retained at skills/caveman/LICENSE. Engine/runtime components are not included.",
+      "local_path": "skills/caveman",
+      "installation": null,
+      "local_changes": [
+        "Changed default mode from full to ultra at the user's request.",
+        "Shared global/AGENTS.md activates ultra by default and honours task-level overrides.",
+        "Copied the upstream root LICENSE into the skill folder; omitted the redundant upstream README, whose mode guidance differs from SKILL.md."
+      ]
+    },
+    {
+      "name": "ponytail",
+      "mode": "copy",
+      "source_url": "https://github.com/DietrichGebert/ponytail",
+      "source_path": "skills/ponytail",
+      "revision": "2ed6c52c9d7e5e56942508591085fd45dea277d3",
+      "license": "MIT; upstream notice retained at skills/ponytail/LICENSE.",
+      "local_path": "skills/ponytail",
+      "installation": null,
+      "local_changes": [
+        "Changed default mode from full to ultra in metadata and instructions at the user's request.",
+        "Removed the argument-hint frontmatter field for compatibility with the Codex skill validator.",
+        "Shared global/AGENTS.md activates ultra for coding tasks while preserving requested outcomes, correctness, verification, and task-level overrides.",
+        "Copied the upstream root LICENSE into the skill folder."
+      ]
+    }
+  ]
 }

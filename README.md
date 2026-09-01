@@ -10,9 +10,11 @@ Stephen's skills, MCP definitions, and CLI tool list, shared between desktop and
 - `setup/install.ps1`: a repeatable Windows installer.
 - `cli/tools.json`: command-line tools and installation guidance; `setup/check-tools.ps1` checks availability.
 - `mcp/servers.toml`: portable MCP definitions, initially empty until servers are selected. See `mcp/README.md` for installation.
-- `third-party/sources.json`: a source/version/licence record for imported skills, initially empty. See `third-party/README.md`.
+- `third-party/sources.json`: source revisions, licences, and local changes for imported skills. See `third-party/README.md`.
 
-The first skill, `personal-skill-library`, teaches Codex this library's layout and installation/sync workflow. Add development skills as your actual workflows become clear.
+`personal-skill-library` teaches Codex this library's layout and installation/sync workflow. Pinned copies of `caveman` and `ponytail` provide the default ultra modes: shortest clear chat replies and minimal implementations. Their source revisions, licences, and small local changes are recorded in `third-party/sources.json`.
+
+Install with `-IncludeGlobalInstructions` to activate the defaults across tasks. Ask for `caveman lite`, `ponytail lite`, or `normal mode` when you want to override them for a task. Add further development skills as your actual workflows become clear.
 
 ## Set up another Windows machine
 
