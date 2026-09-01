@@ -6,7 +6,7 @@ Read the shared baseline and the selected profile. Profiles describe engineering
 
 - Implement the complete agreed requirements and maintain a concrete acceptance checklist.
 - Reuse the supplied stack. With free choice, the baseline is Next.js App Router and TypeScript on Vercel, familiar styling, and server Route Handlers where an HTTP API helps the frontend/backend contract.
-- Use a managed database when durable shared data is needed. Supabase is a suitable baseline when already available or selected by the user; another existing supported service may be simpler.
+- Use a managed database when durable shared data is needed. When no provider is specified, Stephen's default is hosted Supabase through the workflow in [supabase-hosted.md](supabase-hosted.md). Preserve an intended existing provider or linked project. Do not start the local Docker stack unless he explicitly requests it.
 - For Supabase, keep migrations in the repository, configure least-privilege access and row-level policies for exposed data, and test permitted and denied access. Use current official Next.js/SSR guidance for cookie-based authentication. Keep elevated secret/service-role keys server-side; publishable keys require appropriate database policies, not secrecy.
 - Treat input validation, authorisation, required persistence, accessibility basics and meaningful failure handling as baseline concerns in every profile.
 - Use a small set of checks tied to actual failure modes. Report results accurately. Prefer readable direct code over dense one-liners that obscure the contract.

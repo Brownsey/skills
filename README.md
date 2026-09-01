@@ -105,7 +105,9 @@ The repository stores reproducible definitions and instructions. Each device ins
 
 Use `setup/check-tools.ps1` to see which listed commands are available and how to install missing ones. Use GitHub CLI for repository, pull request and workflow operations; normal Git push/pull can continue using Git Credential Manager. Follow [CLI setup](cli/README.md) on each device.
 
-Tool sources: [GitHub CLI on GitHub](https://github.com/cli/cli), [Vercel CLI on GitHub](https://github.com/vercel/vercel), and [official Vercel MCP setup](https://vercel.com/docs/agent-resources/vercel-mcp).
+Supabase uses a remote-only workflow by default: authenticate the project-pinned CLI, create and link a hosted project, commit migrations and apply them with `db push`. Docker and the local Supabase stack are excluded unless explicitly requested.
+
+Tool sources: [GitHub CLI on GitHub](https://github.com/cli/cli), [Vercel CLI on GitHub](https://github.com/vercel/vercel), [Supabase CLI setup](https://supabase.com/docs/guides/local-development/cli/getting-started), and [official Vercel MCP setup](https://vercel.com/docs/agent-resources/vercel-mcp).
 
 For MCP servers, maintain selected definitions in `mcp/servers.toml`, then apply the relevant server entries to the device's Codex config using `mcp/README.md`. Vercel is the selected server; each device needs its own configuration and OAuth consent.
 

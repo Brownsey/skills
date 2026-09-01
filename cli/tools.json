@@ -15,6 +15,14 @@
       "required": false
     },
     {
+      "name": "Supabase CLI runner",
+      "command": "npx",
+      "purpose": "Create and manage hosted Supabase projects, migrations and generated types without a local database.",
+      "installation": "Install Node.js 20 or later, then add a pinned CLI to each app with npm install --save-dev --save-exact supabase. Run it as npx supabase and authenticate separately on each device.",
+      "required": false,
+      "project_scoped": true
+    },
+    {
       "name": "Git",
       "command": "git",
       "purpose": "Clone, commit, push, and pull this repository.",

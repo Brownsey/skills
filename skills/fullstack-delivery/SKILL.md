@@ -61,6 +61,8 @@ When available, use `test-driven-development`, `playwright-best-practices` and `
 
 When deployment is requested, use the intended Vercel account/project and a supported deployment path. Prefer a working authenticated CLI. Use `vercel-cli` guidance if available and check installed CLI help for uncertain flags. Do not deploy when the request is planning-only.
 
+When durable persistence is required and Supabase is selected by the brief or personal defaults, read [hosted Supabase delivery](references/supabase-hosted.md). Provision and configure the remote project as part of an authorised implementation; planning-only work stops before cloud mutations.
+
 Deploy a coherent scaffold early. Coordinate edits while packaging a deployment or deploy a committed snapshot. Record the latest verified URL and corresponding revision. Configure environment variables for the correct deployment environment. Read a failed build/deploy's decisive error before retrying.
 
 Prioritise required behaviour, integration and a working deployment. Keep speculative refactors outside scope. Preserve unfinished work and disclose gaps; do not claim incomplete requirements are complete.
