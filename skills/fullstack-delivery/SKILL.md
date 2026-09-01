@@ -43,6 +43,8 @@ Assign disjoint file lists for the actual app. A broad `app/` or `lib/` assignme
 
 Give each worker its relevant requirements, profile, contract, owned files, assumptions, acceptance checks and expected handoff. Keep the full brief accessible without forwarding irrelevant conversation history. Require changed files, checks run and blockers in the handoff.
 
+For new UI or a substantial redesign, use `frontend-design` when available to establish a compact visual direction before frontend implementation. Include that direction in the frontend worker's handoff and the validator's acceptance checks; preserve existing design systems and the main user task.
+
 Frontend fixtures may unblock UI work behind the agreed API boundary. Label them as temporary and replace them with the real backend before delivery. Integrate the first real user journey early, then expand required behaviour.
 
 In a shared workspace, workers do not independently commit, reset, stash, change branches or run competing production builds. The lead coordinates shared build outputs and dependency installs. If using worktrees, establish the integration method before dispatch. Review diffs and test combined behaviour rather than accepting worker success claims alone.

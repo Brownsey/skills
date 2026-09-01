@@ -21,6 +21,8 @@ Install with `-IncludeGlobalInstructions` to activate the defaults across tasks.
 
 The imported Vercel skills cover React best practices, UI guideline reviews and Vercel CLI operations. They remain direct upstream copies; use only the guidance relevant to the current task.
 
+Anthropic's `frontend-design` guides new UI and substantial redesigns with a compact visual direction, intentional typography and useful interaction states. Shared instructions preserve existing design systems and require the frontend validation agent to inspect the running app and desktop/mobile screenshots for substantive UI changes. Minimal implementation must preserve the agreed UX quality. The upstream skill and its Apache-2.0 licence remain unchanged.
+
 `hexagonal-architecture` ports the useful boundary and dependency-injection guidance from the personal Claude skill to Python and TypeScript/Next.js. It keeps business rules testable without imposing placeholder layers. The shared global instructions require dedicated validation agents separate from implementation authors, plus a read-only reviewer, using the testing skills below. Read the [testing workflow and definition-of-done example](skills/fullstack-delivery/references/testing-workflow.md) for frontend/backend test selection and application CI guidance.
 
 ## Original skill sources
@@ -29,6 +31,7 @@ These links open the original GitHub skill directories at the exact versions inc
 
 | Skill | Original GitHub source |
 | --- | --- |
+| Frontend Design | [anthropics/skills](https://github.com/anthropics/skills/tree/53048666b05b4799081517d00e09e0a2dd688678/skills/frontend-design) |
 | Caveman | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/df2ccd85c94ec3c8289cb62ac020d241ccfb0c60/skills/caveman) |
 | Ponytail | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/2ed6c52c9d7e5e56942508591085fd45dea277d3/skills/ponytail) |
 | Vercel React Best Practices | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/063bee94c3f4df8453406c830b0a7df0f2860278/skills/react-best-practices) |

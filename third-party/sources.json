@@ -1,6 +1,17 @@
 {
   "skills": [
     {
+      "name": "frontend-design",
+      "mode": "copy",
+      "source_url": "https://github.com/anthropics/skills",
+      "source_path": "skills/frontend-design",
+      "revision": "53048666b05b4799081517d00e09e0a2dd688678",
+      "license": "Apache-2.0; upstream licence retained at third-party/skills/frontend-design/LICENSE.txt.",
+      "local_path": "third-party/skills/frontend-design",
+      "installation": null,
+      "local_changes": []
+    },
+    {
       "name": "caveman",
       "mode": "copy",
       "source_url": "https://github.com/JuliusBrussee/caveman",
