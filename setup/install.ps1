@@ -14,12 +14,21 @@ if ([Environment]::OSVersion.Platform -ne [PlatformID]::Win32NT) {
 }
 
 $repositoryRoot = Split-Path -Parent $PSScriptRoot
-$sourceDirectory = Join-Path $repositoryRoot 'skills'
+$personalSourceDirectory = Join-Path $repositoryRoot 'skills'
+$thirdPartySourceDirectory = Join-Path $repositoryRoot 'third-party/skills'
 $SkillsDirectory = [IO.Path]::GetFullPath($SkillsDirectory)
 $CodexDirectory = [IO.Path]::GetFullPath($CodexDirectory)
-$sourceSkills = @(Get-ChildItem -LiteralPath $sourceDirectory -Directory | Where-Object {
-    Test-Path -LiteralPath (Join-Path $_.FullName 'SKILL.md') -PathType Leaf
+$sourceSkills = @(foreach ($sourceDirectory in @($personalSourceDirectory, $thirdPartySourceDirectory)) {
+    if (Test-Path -LiteralPath $sourceDirectory) {
+        Get-ChildItem -LiteralPath $sourceDirectory -Directory | Where-Object {
+            Test-Path -LiteralPath (Join-Path $_.FullName 'SKILL.md') -PathType Leaf
+        }
+    }
 })
+if (@($sourceSkills | Group-Object Name | Where-Object Count -gt 1).Count -gt 0) {
+    throw 'Duplicate skill names across source directories. Nothing will be replaced.'
+}
+$relocations = @()
 
 # Preflight every destination before creating or changing anything.
 foreach ($sourceSkill in $sourceSkills) {
@@ -35,6 +44,13 @@ foreach ($sourceSkill in $sourceSkills) {
                     $targetPath = Join-Path $SkillsDirectory $targetPath
                 }
                 $matches = [IO.Path]::GetFullPath($targetPath).TrimEnd('\', '/') -ieq $sourceSkill.FullName.TrimEnd('\', '/')
+                # Only migrate links to this clone's previous location for this same skill.
+                $legacyPath = Join-Path $personalSourceDirectory $sourceSkill.Name
+                if (-not $matches -and $sourceSkill.Parent.FullName -ieq $thirdPartySourceDirectory -and
+                    [IO.Path]::GetFullPath($targetPath).TrimEnd('\', '/') -ieq $legacyPath.TrimEnd('\', '/')) {
+                    $matches = $true
+                    $relocations += $destination
+                }
             }
         }
         if (-not $matches) {
@@ -82,6 +98,10 @@ if ($IncludeGlobalInstructions) {
 [IO.Directory]::CreateDirectory($SkillsDirectory) | Out-Null
 foreach ($sourceSkill in $sourceSkills) {
     $destination = Join-Path $SkillsDirectory $sourceSkill.Name
+    if ($destination -in $relocations) {
+        # Nonrecursive deletion of a preflighted directory link leaves its target intact.
+        [IO.Directory]::Delete($destination)
+    }
     if ($null -eq (Get-Item -LiteralPath $destination -Force -ErrorAction SilentlyContinue)) {
         New-Item -ItemType Junction -Path $destination -Target $sourceSkill.FullName | Out-Null
         Write-Host "Linked $($sourceSkill.Name)"

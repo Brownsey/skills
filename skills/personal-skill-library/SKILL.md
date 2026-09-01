@@ -16,9 +16,10 @@ Read the clone's AGENTS.md before editing. Make changes in the clone so Git reco
 ## Author and install
 
 - Store each reusable workflow in `skills/<name>/SKILL.md`. Give it a narrow description, a procedure suited to the user's actual workflow, and only the supporting files it needs.
+- Keep imported skill directories unchanged under `third-party/skills/<name>/`, with pinned sources in `third-party/sources.json` and upstream root licences under `third-party/licenses/`. Keep personal overrides in `global/AGENTS.md`.
 - Keep shared personal expectations in `global/AGENTS.md`; keep application-specific commands with their application.
 - On Windows, run `setup/install.ps1` from the clone to register new skills. Add `-IncludeGlobalInstructions` when applying changes to shared personal instructions.
-- The installer creates folder junctions, so edits to an existing skill are available through its installed path. Run it again after adding a skill. If Codex does not show changes, restart it and test in a fresh task.
+- The installer links both skill directories and migrates its old personal-skill links to the third-party location when applicable. Run it again after adding or relocating a skill. If Codex does not show changes, restart it and test in a fresh task.
 - Validate frontmatter and referenced resources, then try representative requests where practical. Distinguish structural validation from observing correct skill selection and behavior.
 
 ## Sync when requested

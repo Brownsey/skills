@@ -1,0 +1,47 @@
+# Full-stack launch prompt
+
+Use the original brief as the source of truth. Fill factual fields and omit optional fields that do not apply.
+
+```text
+Use $fullstack-delivery to implement and deploy this app.
+
+Profile: light [or medium / high]
+Original brief: [paste the complete brief]
+Starting repository: [current workspace or supplied repository]
+Deliverables: [required code, URL, documentation and other outputs]
+Stack: [required stack, or free choice]
+Vercel target: [intended account/team and project, or a new project]
+
+Extract mandatory requirements and acceptance checks. Make a concise plan
+and agree a shared API contract before splitting implementation.
+Use Next.js + TypeScript if no supplied stack or stronger preference applies.
+
+Run two workers in parallel once the scaffold and contract are ready:
+- Frontend owns named screens/components/styles and consumes the contract.
+- Backend owns named API/server/storage files and implements the contract.
+- You own shared files, dependencies, integration, deployment and final checks.
+Use disjoint file ownership and no nested workers.
+
+This request authorises implementing the brief and deploying to the target above.
+Deploy a runnable scaffold early. Connect the first real frontend/backend flow
+early, then finish required behaviour, verification and handoff.
+Return the deployed URL, checks, requirement coverage, known gaps and trade-offs.
+```
+
+For planning only, use this separate prompt:
+
+```text
+Use $fullstack-delivery to refine this brief into an execution prompt, API contract
+and concise implementation plan. Do not implement or deploy yet.
+
+Profile: light [or medium / high]
+Original brief: [paste the complete brief]
+Starting repository: [current workspace or supplied repository]
+Stack: [required stack, or free choice]
+Intended deployment: Vercel
+
+Preserve all mandatory requirements, identify consequential unknowns and define
+acceptance checks. Include proposed frontend/backend ownership in the plan.
+Return the plan and a suggested execution prompt for later use. Do not launch
+implementation workers or run deployment commands for this planning request.
+```

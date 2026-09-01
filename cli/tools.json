@@ -1,6 +1,20 @@
 {
   "tools": [
     {
+      "name": "Node.js",
+      "command": "node",
+      "purpose": "Run Next.js apps; use a release supported by the chosen framework.",
+      "installation": "Install a supported Node.js release from https://nodejs.org/en/download",
+      "required": false
+    },
+    {
+      "name": "Vercel CLI",
+      "command": "vercel",
+      "purpose": "Deploy and inspect Vercel projects; authenticate separately on each device.",
+      "installation": "See https://vercel.com/docs/cli for installation and login instructions.",
+      "required": false
+    },
+    {
       "name": "Git",
       "command": "git",
       "purpose": "Clone, commit, push, and pull this repository.",
@@ -17,8 +31,8 @@
     {
       "name": "GitHub CLI",
       "command": "gh",
-      "purpose": "Optional GitHub repository and pull request management.",
-      "installation": "Install from https://cli.github.com/ and authenticate on this device with gh auth login.",
+      "purpose": "Preferred GitHub repository, pull request, issue and workflow management alongside Git.",
+      "installation": "winget install --id GitHub.cli -e --source winget; then gh auth login --hostname github.com --git-protocol https --web. See cli/README.md.",
       "required": false
     },
     {

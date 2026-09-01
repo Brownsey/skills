@@ -8,6 +8,7 @@
 
 ## Default modes
 
+- These are personal mode selections applied after reading the skills; they override the upstream default mode without modifying upstream files.
 - Read the `caveman` skill and use its `ultra` mode for chat replies by default: the shortest wording that preserves meaning and technical accuracy.
 - For coding tasks, read the `ponytail` skill and use its `ultra` mode by default: reuse existing code and platform capabilities, minimise implementation and dependencies, and avoid speculative features.
 - Keep the requested outcome, correctness, and necessary verification intact when simplifying. Keep any required progress updates brief.

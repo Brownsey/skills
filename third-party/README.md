@@ -1,24 +1,13 @@
 # Third-party skills
 
-Use two approaches according to how a skill will be maintained:
+`skills/<name>/` contains unchanged copies of upstream skill directories at the exact commits recorded in `sources.json`. This repository's installer links them alongside our original skills. The full upstream projects, plugins and runtimes are not installed.
 
-- **Customised copy:** place a reviewed copy in `skills/<name>/`, keep its licence and required notices, and record its source in `sources.json`. The regular skill installer links this copy on both devices.
-- **Unchanged external installation:** record its exact source revision and per-device installation instructions in `sources.json`. Use that source's supported installer on each machine. Our installer does not fetch external skills from this file.
+Keep personal choices, including Caveman ultra and Ponytail ultra, in `../global/AGENTS.md`. Do not edit vendored files to set defaults. Keep custom workflows in the repository's top-level `skills/` directory. Bundled Codex skills remain managed by Codex.
 
-Prefer a customised copy when it is part of a frequently used workflow or you want to adapt its instructions. Prefer an external installation when you want the upstream package to remain responsible for its structure. Keep bundled Codex skills managed by Codex.
+Each source record includes the upstream repository, directory, full commit SHA, local path, licence and local changes (normally an empty list). Root licence files are retained separately under `licenses/` so each skill directory remains an exact copy. Preserve notices inside the copied directories too.
 
-For each source record, include:
+Read imported instructions and inspect executable helpers before installing or running them. For updates, select a new exact revision, review its diff, replace the complete skill directory, verify it against upstream and update its source record. Updates are explicit; there is no automatic tracking of upstream branches.
 
-- `name`: local skill name.
-- `mode`: `copy` or `external`.
-- `source_url`: upstream repository URL.
-- `source_path`: skill directory within that repository.
-- `revision`: exact full upstream commit SHA, not a moving branch.
-- `license`: identified licence and location of retained licence/notice files.
-- `local_path`: repository-relative path for a copied skill, or null for an external installation.
-- `installation`: per-device steps for an external installation, or null for a copy.
-- `local_changes`: concise notes about deliberate modifications.
+Upstream Ponytail includes `argument-hint` in its frontmatter. The built-in skill-creator validator rejects this extra field; it is retained to preserve the original. Validate its YAML, name, description and references separately rather than silently modifying upstream metadata.
 
-Read imported instructions and inspect executable helpers before installing or running them. If reuse permission is unclear, check it before copying or redistributing the skill. Resolve name collisions so Codex can distinguish the intended skill.
-
-To update a copied skill, compare its recorded revision with a selected newer upstream revision, review the differences, preserve deliberate local changes, test the result, and update the recorded SHA. Do not overwrite local customisations or automatically track upstream's latest branch.
+`web-design-guidelines` fetches a live upstream guideline document when used. Its copied skill is pinned; that remote document can change independently.

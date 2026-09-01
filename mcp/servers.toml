@@ -1,4 +1,6 @@
-# Add reviewed MCP server definitions here as servers are selected.
 # This is a portable configuration fragment, not an automatically loaded Codex config.
 # Keep tokens out of Git. Reference environment variable names instead.
 # See README.md in this directory for configuration and per-device authentication.
+
+[mcp_servers.vercel]
+url = "https://mcp.vercel.com"
