@@ -17,13 +17,17 @@ Stephen's skills, MCP definitions, and CLI tool list, shared between desktop and
 
 Install with `-IncludeGlobalInstructions` to activate the defaults across tasks. Ask for `caveman lite`, `ponytail lite`, or `normal mode` when you want to override them for a task. Add further development skills as your actual workflows become clear.
 
-`fullstack-delivery` provides concise planning, a shared API contract, parallel frontend/backend ownership, early Vercel deployment and final verification. Choose a [light, medium or high profile](skills/fullstack-delivery/references/profiles.md) in its [launch prompt](skills/fullstack-delivery/references/launch-prompt.md). Profiles control implementation depth; all preserve required behaviour. Installing the workflow does not create an app or authenticate with Vercel.
+`fullstack-delivery` provides a one-pass brief interrogation, concise planning, shared API/UI contracts, dependency-driven parallel ownership, early Vercel deployment and final verification. Choose a [light, medium or high profile](skills/fullstack-delivery/references/profiles.md) in its [launch prompt](skills/fullstack-delivery/references/launch-prompt.md). Add rapid delivery mode for pipelined validation, shared runtime reuse and UI-heavy visual/interaction workstreams. Profiles still control implementation depth; rapid mode changes scheduling only. Worker count follows independent critical-path work rather than a fixed slot count. The selected Superpowers testing and review skills run inside this workflow rather than as a separate planning controller. Installing the workflow does not create an app or authenticate with Vercel.
+
+Tune rapid delivery with representative rehearsals rather than agent-count intuition. Compare mandatory requirement coverage, elapsed time, tokens or credits where visible, agent starts, merge conflicts, repeated commands, defect cycles and unresolved findings. Keep changes that improve verified outcomes per wall-clock minute.
+
+`python-quality` establishes or repairs Python gates with `uv`, Ruff, pytest, optional project-pinned type checking, fast commit hooks and one CI-backed verification command. Its [workflow](skills/python-quality/references/workflow.md) is informed by [Brownsey/lendable](https://github.com/Brownsey/lendable) and current Astral documentation.
 
 The imported Vercel skills cover React best practices, UI guideline reviews and Vercel CLI operations. They remain direct upstream copies; use only the guidance relevant to the current task.
 
-Anthropic's `frontend-design` guides new UI and substantial redesigns with a compact visual direction, intentional typography and useful interaction states. Shared instructions preserve existing design systems and require the frontend validation agent to inspect the running app and desktop/mobile screenshots for substantive UI changes. Minimal implementation must preserve the agreed UX quality. The upstream skill and its Apache-2.0 licence remain unchanged.
+Anthropic's `frontend-design` guides new UI and substantial redesigns with a compact visual direction, intentional typography and useful interaction states. Emil Kowalski's `animate` adds focused motion guidance only when transitions or gestures serve the interface. Shared instructions preserve existing design systems and require the frontend validation agent to inspect the running app and desktop/mobile screenshots for substantive UI changes. Minimal implementation must preserve the agreed UX quality. Both upstream skills and their licences remain unchanged.
 
-`hexagonal-architecture` ports the useful boundary and dependency-injection guidance from the personal Claude skill to Python and TypeScript/Next.js. It keeps business rules testable without imposing placeholder layers. The shared global instructions require dedicated validation agents separate from implementation authors, plus a read-only reviewer, using the testing skills below. Read the [testing workflow and definition-of-done example](skills/fullstack-delivery/references/testing-workflow.md) for frontend/backend test selection and application CI guidance.
+`hexagonal-architecture` ports the useful boundary and dependency-injection guidance from the personal Claude skill to Python and TypeScript/Next.js. It keeps business rules testable without imposing placeholder layers. Shared instructions delegate substantive implementation to bounded workers, send independent research to read-only subagents while unaffected work continues, and run validation and review skills in agents separate from implementation authors. Read the [testing workflow and definition-of-done example](skills/fullstack-delivery/references/testing-workflow.md) for frontend/backend test selection and application CI guidance.
 
 ## Original skill sources
 
@@ -31,6 +35,7 @@ These links open the original GitHub skill directories at the exact versions inc
 
 | Skill | Original GitHub source |
 | --- | --- |
+| Animate | [emilkowalski/skills](https://github.com/emilkowalski/skills/tree/d23d7f88a2e21c9e4b1418c7abe420f5c1052ba7/skills/animate) |
 | Frontend Design | [anthropics/skills](https://github.com/anthropics/skills/tree/53048666b05b4799081517d00e09e0a2dd688678/skills/frontend-design) |
 | Caveman | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/df2ccd85c94ec3c8289cb62ac020d241ccfb0c60/skills/caveman) |
 | Ponytail | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/2ed6c52c9d7e5e56942508591085fd45dea277d3/skills/ponytail) |
@@ -42,7 +47,23 @@ These links open the original GitHub skill directories at the exact versions inc
 | Requesting Code Review | [obra/superpowers](https://github.com/obra/superpowers/tree/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/skills/requesting-code-review) |
 | Playwright Best Practices | [currents-dev/playwright-best-practices-skill](https://github.com/currents-dev/playwright-best-practices-skill/tree/283d5cbc5d11aac1abda058b16ad22c317d54dc0/playwright-best-practices) |
 
-`fullstack-delivery`, `hexagonal-architecture` and `personal-skill-library` are original skills maintained in this repository. No full Superpowers plugin or automatic test-healing loop is installed. Upstream testing skills remain unchanged; the global instructions preserve acceptance criteria, require independent execution and prevent unnecessary repeat runs.
+`fullstack-delivery`, `hexagonal-architecture`, `python-quality` and `personal-skill-library` are original skills maintained in this repository. No full Superpowers plugin or automatic test-healing loop is installed. Upstream testing skills remain unchanged; the global instructions preserve acceptance criteria, require independent execution and prevent unnecessary repeat runs.
+
+## Give this repository to an agent
+
+On a fresh Windows device, point the agent at this README and use this request:
+
+> Set up `https://github.com/Brownsey/skills.git` on this device using its README. Reuse an existing clean clone whose `origin` matches; otherwise clone it into a permanent user-owned folder. Do not overwrite or delete an existing skill directory. Run the repository installer with global instructions, check the listed CLI tools, apply the Vercel MCP instructions, and ask me only for browser-based account consent when required. Verify the installed skill links, managed global-instruction block, Git remote and clean repository state. Report the clone path, skill destination, tool/authentication status and anything that still needs my action.
+
+The agent should perform this sequence:
+
+1. Confirm Windows, Git, PowerShell 5.1 or later, and Codex are available. Install missing programs only through the documented sources or report the blocker.
+2. Find an existing clone by its `origin`, not by assuming a drive or username. Preserve local edits. With a clean matching clone, run `git pull --ff-only`; otherwise clone the repository into a permanent folder and keep it there because installed skills point into it.
+3. From the clone, run `setup/install.ps1 -IncludeGlobalInstructions`. Its default skill destination is the current per-user Codex discovery directory, `$env:USERPROFILE\.agents\skills`. If the device deliberately uses another discovery directory, pass that verified path with `-SkillsDirectory`.
+4. Run `setup/check-tools.ps1`, then follow `cli/README.md` and `mcp/README.md`. Programs, OAuth consent and credentials are device-local and are never copied from Git.
+5. Verify every installed directory link points into this clone, the marked Brownsey/skills block exists once in the effective personal `AGENTS.md`, and unrelated files or instructions remain intact. Newly created links are junctions; matching existing junctions or symbolic links are preserved. Restart Codex and test `personal-skill-library` in a fresh task when catalogue refresh is needed.
+
+The installer intentionally stops on conflicting directories, duplicate skill names or malformed instruction markers. An agent should report the exact path and preserve it rather than replacing it automatically.
 
 ## Set up another Windows machine
 
@@ -51,13 +72,25 @@ Install Git and Codex, and make sure Git can access your GitHub account. Clone t
 ```powershell
 git clone https://github.com/Brownsey/skills.git
 cd skills
-.\setup\install.ps1 -IncludeGlobalInstructions
+.\setup\install.ps1 `
+  -SkillsDirectory "$env:USERPROFILE\.agents\skills" `
+  -IncludeGlobalInstructions
 .\setup\check-tools.ps1
 ```
 
 The installer supports Windows PowerShell 5.1 and PowerShell 7. It reads both `skills/` and `third-party/skills/` and creates a junction for each skill under `$env:USERPROFILE\.agents\skills`, pointing into this clone. Junctions normally do not require administrator rights or Windows Developer Mode. Keep the clone in place after installing it.
 
 The optional `-IncludeGlobalInstructions` switch adds or updates the marked Brownsey/skills block in `$env:CODEX_HOME\AGENTS.md`, or `$env:USERPROFILE\.codex\AGENTS.md` when CODEX_HOME is unset. Existing content outside that block is preserved, and the file is backed up before any change. Edit shared preferences in `global/AGENTS.md`, then rerun the installer on each device.
+
+Finish the device-specific parts when needed:
+
+```powershell
+gh auth status
+codex mcp get vercel
+codex mcp list
+```
+
+If GitHub CLI or Vercel MCP is absent or unauthenticated, follow [CLI setup](cli/README.md) and [MCP setup](mcp/README.md). Browser consent cannot be synced and must be completed separately on each device.
 
 If local policy blocks script execution, follow that device's PowerShell policy rather than changing it automatically. You can still inspect the script and ask Codex to help install it.
 
@@ -78,11 +111,12 @@ Start from a clean working tree. If pulling stops because the two devices have d
 After editing, inspect the changes and stage the specific files you want to share:
 
 ```powershell
+git switch -c brownsey_refine-personal-skill-workflow
 git diff
 git add skills/personal-skill-library/SKILL.md
 git diff --cached
-git commit -m "Refine personal skill library workflow"
-git push
+git commit -m "docs(skills): refine personal skill workflow"
+git push -u origin HEAD
 ```
 
 The file and commit message above are examples; select the actual files you changed. On the other machine, pull and rerun the installer. GitHub sync is explicit, through push and pull. Offline edits stay local until pushed.

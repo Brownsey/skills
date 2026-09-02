@@ -1,53 +1,46 @@
 # Full-stack launch prompt
 
-Use the original brief as the source of truth. Fill factual fields and omit optional fields that do not apply.
+The skill owns the workflow. Keep the launch prompt factual and lean; fill known fields and omit optional ones that do not apply.
 
 ```text
-Use $fullstack-delivery to implement and deploy this app.
+Use $fullstack-delivery to interrogate, implement, validate and deploy this app.
 
 Profile: light [or medium / high]
-Original brief: [paste the complete brief]
-Starting repository: [current workspace or supplied repository]
-Deliverables: [required code, URL, documentation and other outputs]
-Stack: [required stack, or free choice]
-Vercel target: [intended account/team and project, or a new project]
+Delivery mode: rapid [or normal]
+Delivery deadline or constraint: [time/date/none]
+Original brief: [complete brief]
+Starting repository: [workspace/repository]
+Deliverables: [code, URL, documentation and other required outputs]
+Stack: [required stack or free choice]
+Deployment target: [Vercel account/team/project or new project]
 
-Extract mandatory requirements and acceptance checks. Make a concise plan
-and agree a shared API contract before splitting implementation.
-Use Next.js + TypeScript if no supplied stack or stronger preference applies.
+Inspect the brief, repository and environment first. Parallelise distinct repo,
+technical-risk and UI-reference intake evidence, await relevant findings, then ask
+at most one compact batch of questions only for unresolved decisions that block
+correct work or materially change the contract. Publish the canonical kickoff packet
+and show me the priorities, optional cut order and dependency-driven worker split.
 
-Run two workers in parallel once the scaffold and contract are ready:
-- Frontend owns named screens/components/styles and consumes the contract.
-- Backend owns named API/server/storage files and implements the contract.
-- You own shared files, dependencies, integration, deployment and final checks.
-Use disjoint file ownership and no nested workers.
-
-Define done through observable acceptance criteria and use test-first checks.
-After implementation, use separate frontend/backend validation agents for the
-affected surfaces, then a separate read-only reviewer of the settled code/tests.
-Validators may add missing tests in assigned files but return production defects
-to the implementation owner. Required failing tests must not be skipped or weakened.
-
-This request authorises implementing the brief and deploying to the target above.
-Deploy a runnable scaffold early. Connect the first real frontend/backend flow
-early, then finish required behaviour, verification and handoff.
-Return the deployed URL, checks, requirement coverage, known gaps and trade-offs.
+This request authorises in-scope implementation and deployment to the target above. Follow the
+skill's selected scheduling, testing, independent validation, review and URL-verification
+rules. Treat my later input as steering through the lead. Return the verified URL,
+requirement evidence, checks, known gaps and material trade-offs.
 ```
 
-For planning only, use this separate prompt:
+For planning only:
 
 ```text
-Use $fullstack-delivery to refine this brief into an execution prompt, API contract
-and concise implementation plan. Do not implement or deploy yet.
+Use $fullstack-delivery to interrogate this brief and return its canonical kickoff
+packet plus a reusable execution prompt. Do not implement, provision or deploy.
 
 Profile: light [or medium / high]
-Original brief: [paste the complete brief]
-Starting repository: [current workspace or supplied repository]
-Stack: [required stack, or free choice]
-Intended deployment: Vercel
+Delivery mode: rapid [or normal]
+Original brief: [complete brief]
+Starting repository: [workspace/repository]
+Stack: [required stack or free choice]
+Intended deployment: [target]
 
-Preserve all mandatory requirements, identify consequential unknowns and define
-acceptance checks. Include proposed frontend/backend ownership in the plan.
-Return the plan and a suggested execution prompt for later use. Do not launch
-implementation workers or run deployment commands for this planning request.
+Inspect available evidence before asking at most one compact batch of blocking
+questions. Preserve mandatory requirements with stable IDs, acceptance evidence,
+assumptions, priorities, optional cut order, API/UI contracts, resource locks and
+dependency-driven ownership.
 ```
