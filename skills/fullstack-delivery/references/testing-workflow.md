@@ -42,11 +42,11 @@ For each criterion, record the actual test name/path, command and result. Add re
 
 ## Agent ownership and final evidence
 
-Implementation agents use test-first checks as feedback. After the change settles, a fresh frontend validator and a fresh backend validator handle their affected surfaces. For a single-surface change, only that validator is needed. Give them the brief, acceptance criteria, contract, test environment, files and current commands. If needed, give them disjoint test-file ownership to add missing cases.
+Implementation agents use test-first checks as feedback. They do not perform their own independent review. After the change settles, a fresh frontend validator and a fresh backend validator handle their affected surfaces. For a single-surface change, only that validator is needed. Give them the brief, acceptance criteria, contract, test environment, files, current commands and applicable validation guidance such as Playwright or UI guidelines. If needed, give them disjoint test-file ownership to add missing cases.
 
 Validators leave production code and agreed behavior unchanged. A failed assertion is diagnosed against the requirement. Return implementation defects to the implementation owner; correct a faulty test only with an explicit rationale. Prove that a meaningful regression check can detect its target defect, using the pre-fix version or a controlled isolated mutation when appropriate. Do not reset the user's shared checkout for this experiment.
 
-After code and test edits settle, a separate read-only reviewer uses `requesting-code-review` to examine requirement coverage, test quality and actual changes. Review uncommitted changes too when present. The reviewer must not rubber-stamp the implementer's checklist or derive all expected outcomes from the code. Validators/reviewers are leaf agents.
+After code and test edits settle, the lead uses `requesting-code-review` to dispatch a separate read-only reviewer for requirement coverage, test quality and actual changes. Review uncommitted changes too when present. The reviewer follows the review template, must not rubber-stamp the implementer's checklist or derive all expected outcomes from the code, and does not delegate. Validators/reviewers are leaf agents.
 
 The lead coordinates shared builds, servers, dependencies and test data. Avoid concurrent builds into the same output directory or test runs that delete each other's fixtures. Recheck affected behavior after fixes. Report failures, skips and unavailable environments accurately; keep required cases failing rather than weakening them to make a report green.
 

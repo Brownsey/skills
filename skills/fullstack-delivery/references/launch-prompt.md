@@ -16,17 +16,27 @@ Extract mandatory requirements and acceptance checks. Make a concise plan
 and agree a shared API contract before splitting implementation.
 Use Next.js + TypeScript if no supplied stack or stronger preference applies.
 
-Run two workers in parallel once the scaffold and contract are ready:
+Use the default two-worker parallel implementation once the scaffold and contract are ready:
 - Frontend owns named screens/components/styles and consumes the contract.
 - Backend owns named API/server/storage files and implements the contract.
-- You own shared files, dependencies, integration, deployment and final checks.
-Use disjoint file ownership and no nested workers.
+- You own shared files, dependencies, integration, deployment, validation coordination and final evidence.
+Use disjoint file ownership. All implementation, research, validation and review
+agents are leaves and do not delegate.
+
+When material repository or external research is needed, send a bounded read-only
+research agent to gather authoritative evidence while unaffected implementation
+continues. Resolve contract, dependency, security or data-model findings before
+workers implement the affected decision.
 
 Define done through observable acceptance criteria and use test-first checks.
 After implementation, use separate frontend/backend validation agents for the
-affected surfaces, then a separate read-only reviewer of the settled code/tests.
+affected surfaces. Run them concurrently when their environments are independent,
+then use a separate read-only reviewer of the settled code/tests.
 Validators may add missing tests in assigned files but return production defects
 to the implementation owner. Required failing tests must not be skipped or weakened.
+Run review and audit work only inside validation or read-only review agents.
+The lead uses requesting-code-review to dispatch the final reviewer; the reviewer
+follows its read-only template and does not dispatch another agent.
 
 This request authorises implementing the brief and deploying to the target above.
 Deploy a runnable scaffold early. Connect the first real frontend/backend flow

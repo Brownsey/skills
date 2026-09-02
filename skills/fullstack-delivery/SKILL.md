@@ -31,29 +31,33 @@ If durable storage is required, use a deployment-compatible durable service. Pro
 
 ## Parallel implementation
 
-Use a lead and two workers when the user requests parallel work, tools are available, and the scaffold and contract make the tasks separable. Otherwise work sequentially. Do not add nested workers by default.
+For an implementation spanning both frontend and backend, default to a lead plus two parallel workers once the scaffold and shared contract are stable. Parallelise only when tools are available and file ownership, dependencies and runtime state can be separated safely. Use one sequential implementation worker when the request affects one surface, the work is tightly coupled, or coordination would cost more than it saves. Honour an explicit request for sequential work. Workers, researchers, validators and reviewers are leaf agents and never delegate.
 
 | Owner | Scope |
 | --- | --- |
-| Lead | Scaffold, shared API/types, package files and lockfile, framework config, integration, deployment and final verification |
+| Lead | Scaffold, shared API/types, package files and lockfile, framework config, integration, deployment, validation coordination and final evidence |
 | Frontend | Named pages, components, UI styles, client API calls, loading/empty/error states and local tests |
 | Backend | Named API routes, server validation, business logic, required storage/migrations and local tests |
+
+Feature-surface production implementation belongs to the workers. The lead edits only shared scaffold, contracts, dependencies, framework configuration and integration code, avoiding duplication of worker-owned code. If only one application surface is affected, use one implementation worker and retain the corresponding independent validator.
 
 Assign disjoint file lists for the actual app. A broad `app/` or `lib/` assignment can overlap; avoid it. Only the lead changes shared files or dependencies. Route contract changes through the lead and notify both workers before using them.
 
 Give each worker its relevant requirements, profile, contract, owned files, assumptions, acceptance checks and expected handoff. Keep the full brief accessible without forwarding irrelevant conversation history. Require changed files, checks run and blockers in the handoff.
 
-For new UI or a substantial redesign, use `frontend-design` when available to establish a compact visual direction before frontend implementation. Include that direction in the frontend worker's handoff and the validator's acceptance checks; preserve existing design systems and the main user task.
+For new UI or a substantial redesign, the frontend worker uses `frontend-design` when available to establish a compact visual direction before coding. It shares that direction with the lead and frontend validator; preserve existing design systems and the main user task.
 
 Frontend fixtures may unblock UI work behind the agreed API boundary. Label them as temporary and replace them with the real backend before delivery. Integrate the first real user journey early, then expand required behaviour.
 
-In a shared workspace, workers do not independently commit, reset, stash, change branches or run competing production builds. The lead coordinates shared build outputs and dependency installs. If using worktrees, establish the integration method before dispatch. Review diffs and test combined behaviour rather than accepting worker success claims alone.
+When material repository or external research is needed, dispatch a bounded read-only leaf research subagent while implementation continues on unaffected work. Give it the exact uncertainty, authoritative-source preference and expected evidence. Settle findings that affect the shared contract, dependency choice, security or data model before workers implement that decision.
+
+In a shared workspace, workers do not independently commit, reset, stash, change branches or run competing production builds. The lead coordinates shared build outputs and dependency installs. If using worktrees, establish the integration method before dispatch. The lead inspects combined changes for ownership and integration conflicts and tests combined behaviour; independent validators and reviewers assess correctness and quality.
 
 ## Independent validation
 
-Apply the dedicated validation-agent gate from the shared global instructions. After implementation, allocate separate frontend and backend validators for the affected surfaces; these must be distinct from the implementation authors. Run them sequentially when slots or test resources are shared. Give them the original acceptance criteria and contract, not just the implementation summary.
+Apply the dedicated validation-agent gate from the shared global instructions. After implementation, allocate separate frontend and backend validators for the affected surfaces; these must be distinct from the implementation authors. Run the validators concurrently when slots, build outputs, services and test data are independent; otherwise run them sequentially. Give them the original acceptance criteria and contract, not just the implementation summary.
 
-Validators run the required checks and may add missing tests in assigned test files. Production fixes return to the implementation owner. Verify an integrated journey against the real backend and required persistence, then use `requesting-code-review` for a separate read-only assessment of the settled code and tests. Recheck affected behavior after fixes; a green mocked suite or a skipped acceptance case is insufficient.
+Validators run the required checks and may add missing tests in assigned test files. Production fixes return to the implementation owner. Review and audit work runs inside dedicated validation/review subagents, never in the implementation worker. The lead applies `requesting-code-review` to dispatch the final read-only assessment of the settled code and tests. Verify an integrated journey against the real backend and required persistence. Recheck affected behavior after fixes; a green mocked suite or a skipped acceptance case is insufficient.
 
 When available, use `test-driven-development`, `playwright-best-practices` and `verification-before-completion` for their relevant roles. Use `hexagonal-architecture` for meaningful business boundaries. See [testing workflow](references/testing-workflow.md) when selecting test layers, defining done or configuring repeatable application checks. Use `python-quality` for Python-specific lint, format, type, test, hook and CI setup when available.
 
@@ -77,4 +81,4 @@ Before reporting completion:
 
 ## Supporting guidance
 
-Use `vercel-react-best-practices` for applicable React rules and `web-design-guidelines` for a requested UI review when available. Load only references needed by the current task. This standalone workflow does not require the Superpowers orchestration chain.
+Use `vercel-react-best-practices` for applicable React rules and run `web-design-guidelines` in the frontend validation/review subagent for a requested UI review when available. Load only references needed by the current task. This standalone workflow does not require the Superpowers orchestration chain.
