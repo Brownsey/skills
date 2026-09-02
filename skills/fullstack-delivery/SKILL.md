@@ -23,23 +23,37 @@ When the user asks for a rapid or time-boxed implementation, enable **rapid deli
 
 ## Brief to plan
 
-1. Preserve the original brief and supplied repository. Extract mandatory requirements and define done for each: observable success, relevant failure/permission cases, test layer, check command and owner. Expected results come from the brief rather than the generated implementation. Keep optional features separate; do not add speculative scope while refining the prompt.
-2. Clarify only decisions that block correct work. Record reversible assumptions and proceed within the authorised scope. If asked only to plan or optimise a prompt, deliver that artifact without starting implementation or deployment.
-3. Follow the provided stack. When free choice applies, prefer the user's familiar stack; the baseline here is Next.js App Router, TypeScript, React UI and Route Handlers in one Vercel project. Use version-matched docs and retain the dependency lockfile. When the deliverable includes a new Python service or an existing Python service lacks repeatable gates, use `python-quality` when available.
-4. Define the shared API contract before splitting work: methods, paths, input/output types, status codes, error shapes, IDs, validation and persistence semantics. Keep shared types free of server-only imports. Concrete request/response examples are useful; writing the entire implementation in the plan is not.
-5. Produce a concise plan covering requirements, the selected profile, file ownership, dependencies and verification. Plan detail should match genuine complexity; do not write implementation code twice.
+Interrogate the brief once before dispatch. This is a compact intake inside this workflow, not a separate planning controller.
+
+Parallelise distinct intake evidence when useful: a read-only repository scout for existing constraints, technical researchers for external facts, and a UI/reference analyst when visual evidence is supplied or central. Do not create several agents to reinterpret the same brief. Each returns evidence and implications; the lead awaits relevant intake evidence, then reconciles it into requirements, questions and contracts.
+
+1. Read the complete brief and inspect the supplied repository, scripts, lockfile, environment templates and deployment configuration before questioning the user. Run a non-mutating preflight for package-manager and lockfile consistency, required CLI availability/authentication, environment-variable names, database/deployment access and intended build/test commands. Preserve the brief and repository as source material; do not replace explicit requirements with generated preferences.
+2. Give each mandatory requirement a stable ID. Separate mandatory, optional and out-of-scope work. Define observable success, relevant failure/permission cases, persistence and user-visible states, test layer, check command and owner. Expected results come from the brief rather than the implementation.
+3. Record initial contradictions, consequential unknowns and reversible assumptions. Identify the highest-risk unknowns and dispatch bounded research for external facts while unaffected intake or, for implementation requests, scaffold work continues. Settle findings that affect the contract, dependency choice, security or data model before implementing that decision.
+4. After relevant intake evidence returns, record `questions: none` or `questions: one-batch` with the effect of each unanswered blocker. Ask at most one compact batch, only for decisions that still block correct work or materially change the contract. Resolve preference-level choices with the repository, familiar stack and reversible assumptions so implementation can continue; workers do not reopen settled preferences.
+5. Follow the provided stack. When free choice applies, prefer the user's familiar stack; the baseline here is Next.js App Router, TypeScript, React UI and Route Handlers in one Vercel project. Use version-matched docs and retain the dependency lockfile. When the deliverable includes a new Python service or an existing Python service lacks repeatable gates, use `python-quality` when available.
+6. Define the shared API and UI contracts before splitting work: methods, paths, input/output types, status codes, error shapes, IDs, validation and persistence semantics; plus page structure, component boundaries and required states where UI workers split. Keep shared types free of server-only imports. Concrete examples are useful; writing the implementation twice is not.
+7. Publish one canonical kickoff packet: requirement IDs, assumptions, selected profile and delivery mode, contract version, priorities, optional cut order, exact file/test ownership, shared-resource locks, delivery deadline or constraint, validation reserve and evidence for done. Resource locks name the owner of dependency installation, build output, dev server/port, database namespace/migrations, preview deployment and aggregate gate. If asked only to plan or optimise a prompt, return this artifact without implementation or deployment.
+
+Keep the kickoff packet canonical. For a run at material risk of compaction, interruption or handoff, mirror requirement status, rulings, ownership, evidence, deployment URL and next action in one concise git-ignored run ledger. Do not create a large planning artifact for a short stable run.
 
 If durable storage is required, use a deployment-compatible durable service. Process memory, runtime files and browser storage are not substitutes for required shared backend persistence. Keep secrets server-side. Authentication and external services follow the brief.
 
 ## Parallel implementation
 
-For an implementation spanning both frontend and backend, default to a lead plus two parallel workers once the scaffold and shared contract are stable. Parallelise only when tools are available and file ownership, dependencies and runtime state can be separated safely. Use one sequential implementation worker when the request affects one surface, the work is tightly coupled, or coordination would cost more than it saves. Honour an explicit request for sequential work. Workers, researchers, validators and reviewers are leaf agents and never delegate.
+For an implementation spanning both frontend and backend, build a dependency graph once the scaffold and shared contract are stable. Assign one worker to each genuinely independent critical-path surface whose files, inputs and runtime state can be separated safely. Agent capacity is not the target: add workers while they shorten the critical path, and stop splitting when coordination or shared state would dominate. Use one sequential implementation worker when the request affects one surface, the work is tightly coupled, or coordination would cost more than it saves. Honour an explicit request for sequential work. Workers, researchers, validators and reviewers are leaf agents and never delegate.
+
+Admit a worker only when its prerequisite contract is stable, write set is disjoint, runtime and test data can be isolated, result has an observable acceptance check and parallel execution shortens the critical path. Duplicate attempts are reserved for hard diagnosis or alternative designs with an objective selector such as tests, measured output or an independent reviewer. Keep the lead's context to the brief, contracts, decisions, dependency graph, acceptance state and compact summaries; raw exploration, logs and stack traces stay with workers.
+
+Use the strongest justified reasoning for contract decisions, difficult integration and high-risk review. Prefer faster lower-effort agents for bounded search, file mapping, repetitive checks, deterministic test execution and structured summaries. Do not maximize effort for every role without evidence that it improves the result.
+
+Before dispatch, scan requirement-to-task coverage, API/UI/type agreement, overlapping file or test ownership and shared-resource locks. Resolve contradictions centrally without adding another user approval gate.
 
 | Owner | Scope |
 | --- | --- |
 | Lead | Scaffold, shared API/types, package files and lockfile, framework config, integration, deployment, validation coordination and final evidence |
-| Frontend | Named pages, components, UI styles, client API calls, loading/empty/error states and local tests |
-| Backend | Named API routes, server validation, business logic, required storage/migrations and local tests |
+| Frontend | One or more disjoint page, component, interaction or visual-foundation surfaces with local tests |
+| Backend | One or more disjoint API, domain, adapter or persistence surfaces with local tests |
 
 Feature-surface production implementation belongs to the workers. The lead edits only shared scaffold, contracts, dependencies, framework configuration and integration code, avoiding duplication of worker-owned code. If only one application surface is affected, use one implementation worker and retain the corresponding independent validator.
 
@@ -49,7 +63,9 @@ Give each worker its relevant requirements, profile, contract, owned files, assu
 
 For new UI or a substantial redesign, the frontend worker uses `frontend-design` when available to establish a compact visual direction before coding. It shares that direction with the lead and frontend validator; preserve existing design systems and the main user task.
 
-For UI-heavy work with four available slots, the lead may split frontend ownership into two workers after recording typography, palette, tokens, breakpoints, page structure, component names/props, required states and the signature interaction. One worker owns visual foundations such as layout, tokens, shared UI primitives, static assets and purposeful motion; the other owns feature screens, forms, client data flow, states and component tests. Use `animate` only when motion serves feedback, spatial continuity or state understanding. Keep a single frontend worker when file or component ownership cannot be made disjoint.
+For UI-heavy work, the lead may use a visual-foundation worker plus interaction workers for disjoint screens or flows after recording typography, palette, tokens, breakpoints, page structure, component names/props, required states and the signature interaction. Visual foundations include layout, tokens, shared UI primitives, static assets and purposeful motion; interaction surfaces include feature screens, forms, client data flow, states and component tests. Use `animate` only when motion serves feedback, spatial continuity or state understanding. Keep coupled files and components under one owner even when more agents are available.
+
+As soon as the primary journey renders, open the real app and capture an early desktop/mobile artifact or preview. Apply the highest-impact steering while backend and secondary work continue. Frontend implementation feedback is useful but does not replace independent frontend validation.
 
 Frontend fixtures may unblock UI work behind the agreed API boundary. Label them as temporary and replace them with the real backend before delivery. Integrate the first real user journey early, then expand required behaviour.
 
@@ -67,6 +83,8 @@ In rapid delivery mode, pipeline validation rather than treating it as one final
 
 The frontend validator combines applicable browser interaction, desktop/mobile screenshots, accessibility, UI guideline, React performance and motion checks in one pass. The backend validator combines domain, input, authorization, persistence, adapter and selected security or architecture checks. After both surfaces settle, run one real integrated journey. The final reviewer covers requirements, test quality and diff defects without repeating completed specialty audits. It may overlap with a preview deployment or URL check of the same tested snapshot when outputs and test data do not conflict and no irreversible migration runs; Critical or Important findings invalidate the affected evidence and deployment result.
 
+Record criterion-level evidence as it passes: tested snapshot, command, result and artifact or URL where applicable. The final gate compiles this existing evidence and reruns only invalidated checks rather than reconstructing the run.
+
 When available, use `test-driven-development`, `playwright-best-practices` and `verification-before-completion` for their relevant roles. Use `hexagonal-architecture` for meaningful business boundaries. See [testing workflow](references/testing-workflow.md) when selecting test layers, defining done or configuring repeatable application checks. Use `python-quality` for Python-specific lint, format, type, test, hook and CI setup when available.
 
 ## Deploy and verify
@@ -79,7 +97,7 @@ Deploy a coherent scaffold early. Coordinate edits while packaging a deployment 
 
 Prioritise required behaviour, integration and a working deployment. Keep speculative refactors outside scope. Preserve unfinished work and disclose gaps; do not claim incomplete requirements are complete.
 
-In a time-boxed run, reserve the final critical-path window for independent validation, one aggregate gate, final review, deployment and URL verification. Stop optional features, polish, refactors and speculative tests when that window begins. Completion still requires every mandatory criterion, a real-backend integrated journey, no required skips, no unresolved Critical or Important findings and a verified URL when deployment is required.
+In a time-boxed run, derive a validation reserve from observed build, browser, deployment and review duration; do not assume a universal minute split. When the reserve boundary begins, stop opening new work and cut optional features, polish, refactors and speculative tests in the recorded order. Completion still requires every mandatory criterion, a real-backend integrated journey, no required skips, no unresolved Critical or Important findings and a verified URL when deployment is required.
 
 Before reporting completion:
 
@@ -91,4 +109,4 @@ Before reporting completion:
 
 ## Supporting guidance
 
-Use `vercel-react-best-practices` for applicable React rules and run `web-design-guidelines` in the frontend validation/review subagent for a requested UI review when available. Load only references needed by the current task. This standalone workflow does not require the Superpowers orchestration chain.
+Use `vercel-react-best-practices` for applicable React rules and run `web-design-guidelines` in the frontend validation/review subagent for a requested UI review when available. Load only references needed by the current task. Do not run a separate Superpowers planning or orchestration chain before this workflow. Use the selected Superpowers skills inside it: `test-driven-development` during implementation, `requesting-code-review` for the settled final review and `verification-before-completion` for final evidence.

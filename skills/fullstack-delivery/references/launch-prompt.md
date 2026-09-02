@@ -1,75 +1,46 @@
 # Full-stack launch prompt
 
-Use the original brief as the source of truth. Fill factual fields and omit optional fields that do not apply.
+The skill owns the workflow. Keep the launch prompt factual and lean; fill known fields and omit optional ones that do not apply.
 
 ```text
-Use $fullstack-delivery to implement and deploy this app.
+Use $fullstack-delivery to interrogate, implement, validate and deploy this app.
 
 Profile: light [or medium / high]
-Delivery mode: rapid [omit for normal scheduling]
-Original brief: [paste the complete brief]
-Starting repository: [current workspace or supplied repository]
-Deliverables: [required code, URL, documentation and other outputs]
-Stack: [required stack, or free choice]
-Vercel target: [intended account/team and project, or a new project]
+Delivery mode: rapid [or normal]
+Delivery deadline or constraint: [time/date/none]
+Original brief: [complete brief]
+Starting repository: [workspace/repository]
+Deliverables: [code, URL, documentation and other required outputs]
+Stack: [required stack or free choice]
+Deployment target: [Vercel account/team/project or new project]
 
-Extract mandatory requirements and acceptance checks. Make a concise plan
-and agree a shared API contract before splitting implementation.
-Use Next.js + TypeScript if no supplied stack or stronger preference applies.
+Inspect the brief, repository and environment first. Parallelise distinct repo,
+technical-risk and UI-reference intake evidence, await relevant findings, then ask
+at most one compact batch of questions only for unresolved decisions that block
+correct work or materially change the contract. Publish the canonical kickoff packet
+and show me the priorities, optional cut order and dependency-driven worker split.
 
-Use the default two-worker parallel implementation once the scaffold and contract are ready:
-- Frontend owns named screens/components/styles and consumes the contract.
-- Backend owns named API/server/storage files and implements the contract.
-- You own shared files, dependencies, integration, deployment, validation coordination and final evidence.
-Use disjoint file ownership. All implementation, research, validation and review
-agents are leaves and do not delegate.
-
-In rapid mode, pipeline stable surfaces directly into independent validation.
-Run narrow changed-surface checks first, then one full surface gate after fixes.
-Reuse the lead-managed install, server, build and isolated fixtures where safe.
-Assign the aggregate production build/static gate to one validator and never rerun
-an identical command against an unchanged snapshot.
-For UI-heavy work with four slots, split frontend into visual-foundation and
-interaction workers only after defining their component contracts and disjoint files;
-otherwise retain one frontend worker.
-
-When material repository or external research is needed, send a bounded read-only
-research agent to gather authoritative evidence while unaffected implementation
-continues. Resolve contract, dependency, security or data-model findings before
-workers implement the affected decision.
-
-Define done through observable acceptance criteria and use test-first checks.
-Use separate frontend/backend validation agents for the affected surfaces. Start
-each when its implementation surface is stable and run them concurrently when their environments are independent,
-then use a separate read-only reviewer of the settled code/tests.
-Validators may add missing tests in assigned files but return production defects
-to the implementation owner. Required failing tests must not be skipped or weakened.
-Run review and audit work only inside validation or read-only review agents.
-The lead uses requesting-code-review to dispatch the final reviewer; the reviewer
-follows its read-only template and does not dispatch another agent.
-
-This request authorises implementing the brief and deploying to the target above.
-Deploy a runnable scaffold early. Connect the first real frontend/backend flow
-early, then finish required behaviour, verification and handoff.
-Return the deployed URL, checks, requirement coverage, known gaps and trade-offs.
-Reserve the final critical-path window for validation, one aggregate gate, final
-review, deployment and URL verification; stop optional work when it begins.
+This request authorises in-scope implementation and deployment to the target above. Follow the
+skill's selected scheduling, testing, independent validation, review and URL-verification
+rules. Treat my later input as steering through the lead. Return the verified URL,
+requirement evidence, checks, known gaps and material trade-offs.
 ```
 
-For planning only, use this separate prompt:
+For planning only:
 
 ```text
-Use $fullstack-delivery to refine this brief into an execution prompt, API contract
-and concise implementation plan. Do not implement or deploy yet.
+Use $fullstack-delivery to interrogate this brief and return its canonical kickoff
+packet plus a reusable execution prompt. Do not implement, provision or deploy.
 
 Profile: light [or medium / high]
-Original brief: [paste the complete brief]
-Starting repository: [current workspace or supplied repository]
-Stack: [required stack, or free choice]
-Intended deployment: Vercel
+Delivery mode: rapid [or normal]
+Original brief: [complete brief]
+Starting repository: [workspace/repository]
+Stack: [required stack or free choice]
+Intended deployment: [target]
 
-Preserve all mandatory requirements, identify consequential unknowns and define
-acceptance checks. Include proposed frontend/backend ownership in the plan.
-Return the plan and a suggested execution prompt for later use. Do not launch
-implementation workers or run deployment commands for this planning request.
+Inspect available evidence before asking at most one compact batch of blocking
+questions. Preserve mandatory requirements with stable IDs, acceptance evidence,
+assumptions, priorities, optional cut order, API/UI contracts, resource locks and
+dependency-driven ownership.
 ```
