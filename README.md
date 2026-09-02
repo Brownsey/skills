@@ -19,6 +19,8 @@ Install with `-IncludeGlobalInstructions` to activate the defaults across tasks.
 
 `fullstack-delivery` provides concise planning, a shared API contract, parallel frontend/backend ownership, early Vercel deployment and final verification. Choose a [light, medium or high profile](skills/fullstack-delivery/references/profiles.md) in its [launch prompt](skills/fullstack-delivery/references/launch-prompt.md). Profiles control implementation depth; all preserve required behaviour. Installing the workflow does not create an app or authenticate with Vercel.
 
+`python-quality` establishes or repairs Python gates with `uv`, Ruff, pytest, optional project-pinned type checking, fast commit hooks and one CI-backed verification command. Its [workflow](skills/python-quality/references/workflow.md) is informed by [Brownsey/lendable](https://github.com/Brownsey/lendable) and current Astral documentation.
+
 The imported Vercel skills cover React best practices, UI guideline reviews and Vercel CLI operations. They remain direct upstream copies; use only the guidance relevant to the current task.
 
 Anthropic's `frontend-design` guides new UI and substantial redesigns with a compact visual direction, intentional typography and useful interaction states. Shared instructions preserve existing design systems and require the frontend validation agent to inspect the running app and desktop/mobile screenshots for substantive UI changes. Minimal implementation must preserve the agreed UX quality. The upstream skill and its Apache-2.0 licence remain unchanged.
@@ -42,7 +44,7 @@ These links open the original GitHub skill directories at the exact versions inc
 | Requesting Code Review | [obra/superpowers](https://github.com/obra/superpowers/tree/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/skills/requesting-code-review) |
 | Playwright Best Practices | [currents-dev/playwright-best-practices-skill](https://github.com/currents-dev/playwright-best-practices-skill/tree/283d5cbc5d11aac1abda058b16ad22c317d54dc0/playwright-best-practices) |
 
-`fullstack-delivery`, `hexagonal-architecture` and `personal-skill-library` are original skills maintained in this repository. No full Superpowers plugin or automatic test-healing loop is installed. Upstream testing skills remain unchanged; the global instructions preserve acceptance criteria, require independent execution and prevent unnecessary repeat runs.
+`fullstack-delivery`, `hexagonal-architecture`, `python-quality` and `personal-skill-library` are original skills maintained in this repository. No full Superpowers plugin or automatic test-healing loop is installed. Upstream testing skills remain unchanged; the global instructions preserve acceptance criteria, require independent execution and prevent unnecessary repeat runs.
 
 ## Set up another Windows machine
 
@@ -78,11 +80,12 @@ Start from a clean working tree. If pulling stops because the two devices have d
 After editing, inspect the changes and stage the specific files you want to share:
 
 ```powershell
+git switch -c brownsey_refine-personal-skill-workflow
 git diff
 git add skills/personal-skill-library/SKILL.md
 git diff --cached
-git commit -m "Refine personal skill library workflow"
-git push
+git commit -m "docs(skills): refine personal skill workflow"
+git push -u origin HEAD
 ```
 
 The file and commit message above are examples; select the actual files you changed. On the other machine, pull and rerun the installer. GitHub sync is explicit, through push and pull. Offline edits stay local until pushed.

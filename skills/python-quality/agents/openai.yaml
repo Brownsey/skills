@@ -1,0 +1,3 @@
+interface:
+  display_name: "Python Quality"
+  short_description: "Set up reliable Python quality gates"

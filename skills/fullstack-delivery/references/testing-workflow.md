@@ -52,7 +52,7 @@ The lead coordinates shared builds, servers, dependencies and test data. Avoid c
 
 ## Repeatable application gates
 
-Inspect the existing scripts first. When establishing tooling in a new app, provide documented commands for static checks, unit/component tests, integration tests, browser tests and production build, plus one aggregate verification command. Adapt names to the existing package manager or Python runner; names such as `test:unit`, `test:integration`, `test:e2e` and `verify` are examples.
+Inspect the existing scripts first. When establishing tooling in a new app, provide documented commands for static checks, unit/component tests, integration tests, browser tests and production build, plus one aggregate verification command. Adapt names to the existing package manager or Python runner; names such as `test:unit`, `test:integration`, `test:e2e` and `verify` are examples. For a Python service without coherent existing gates, use `python-quality` when available.
 
 CI should run the relevant gates on the deliverable revision with isolated test configuration and retain useful failure artifacts. Missing required suites, skipped acceptance tests and commands that fail must not become a successful aggregate result. A local command is not an enforced merge rule until CI and repository requirements are configured. This skills repository does not create those gates in an application that does not exist yet.
 

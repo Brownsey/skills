@@ -6,6 +6,17 @@
 - If a required skill is unavailable, explain the limitation and continue with useful work where possible.
 - Keep application-specific conventions and commands in that application's repository.
 
+## Skill routing
+
+- Use `fullstack-delivery` for an application brief, execution-plan refinement, or end-to-end implementation. Default to its `light` profile. If requirements exceed the selected profile, explain the concrete implication and retain that profile unless the user changes it.
+- Use `frontend-design` before new UI or a substantial visual redesign, then use `vercel-react-best-practices` while implementing or reviewing React or Next.js code. Use `web-design-guidelines` for a requested UI, UX or accessibility audit.
+- Use `test-driven-development` for feature work and behaviour-changing fixes. Use `playwright-best-practices` when Playwright is selected or already present. Use `requesting-code-review` and `verification-before-completion` for their final review and evidence gates.
+- Use `hexagonal-architecture` only to assess code with substantial business rules, multiple external adapters or difficult infrastructure coupling. Apply it only when that assessment supports it.
+- Use `vercel-cli` for Vercel deployment, environment, logs or project operations. Use the hosted Supabase workflow in `fullstack-delivery` when the persistence defaults below select Supabase.
+- Use `python-quality` for Python lint, format, type-check, test, commit-hook or CI setup when the repository lacks a coherent existing gate.
+- Use `personal-skill-library` only when creating, refining, installing or syncing this personal skill library.
+- Prefer the smallest clearly applicable set of skills. Do not load overlapping skills merely because they are available.
+
 ## Default modes
 
 - These are personal mode selections applied after reading the skills; they override the upstream default mode without modifying upstream files.
@@ -24,6 +35,24 @@
 - When an app needs durable shared persistence and the brief does not specify a provider, default to hosted Supabase. During an authorised implementation or deployment, create and link the hosted project automatically when the intended app has no existing database; this routine provisioning is part of delivering the app. Reuse an existing intended provider or linked Supabase project rather than replacing it. Planning-only requests do not create cloud resources.
 - For hosted Supabase, follow `fullstack-delivery/references/supabase-hosted.md` when available: prefer the authenticated organisation when unambiguous, default new UK projects to `eu-west-2`, commit migrations, dry-run then apply them with `db push`, generate application types, and configure the linked Vercel project with its URL and publishable key. Never expose elevated keys, database passwords or access tokens in Git, chat or command output. Do not start a local Supabase stack, require Docker, reveal secret keys, reset a linked database or delete a project unless Stephen explicitly requests that action.
 - Ponytail minimises implementation overhead; it must not remove required tests, appropriate fixtures, test tooling, or independent checks. Documentation-only edits and trivial nonbehavioral changes need relevant validation, not invented application tests.
+
+## Python quality defaults
+
+- Preserve a repository's established Python tooling. For a new Python service with no stated standard, use `uv`, commit `uv.lock`, use Ruff for linting and formatting, and use pytest for tests. Add a project-pinned type checker such as `ty` when typed boundaries or non-trivial backend logic make it useful.
+- Provide one repository command named `verify` (or the nearest existing convention) that runs Ruff lint, Ruff format check, configured type checks, pytest and any required integration checks. Keep configuration in `pyproject.toml` where the tools support it.
+- In CI and final validation, use the lockfile without silently updating it, for example `uv run --locked ...`. CI must run the aggregate verification command on the deliverable revision.
+- Keep commit hooks fast. Default Python pre-commit hooks to Ruff lint/fix and formatting using the project's locked Ruff version. Keep unit, integration, browser and production-build gates in `verify`, CI and dedicated validation agents unless the repository's suite is demonstrably fast enough for an existing hook convention.
+- Set coverage targets only when they represent meaningful required behaviour. Coverage percentage supplements acceptance-focused tests; it does not replace them.
+
+## Git and issue conventions
+
+- When creating a branch for Stephen's work, name it `brownsey_<short-kebab-case-name>`, for example `brownsey_add-account-filter`. Derive the name from the intended outcome, use lowercase ASCII letters, numbers and hyphens after the prefix, and keep it concise. Preserve an existing user branch unless the user asks to rename it.
+- Use Conventional Commits: `<type>(<optional-scope>): <imperative description>`. Use `feat` for user-visible capability, `fix` for defects, `refactor` for behaviour-preserving restructuring, `test`, `docs`, `build`, `ci`, `chore`, `perf`, `style` or `revert` when those accurately describe the change.
+- Keep each commit cohesive. Use lowercase types and scopes, omit a final period from the subject, and add a body when the reason or trade-off is not evident from the diff. Mark breaking changes with `!` after the type/scope and explain them in a `BREAKING CHANGE:` footer.
+- Before committing, inspect the staged diff, exclude unrelated files and secrets, and run the relevant checks. Do not use vague messages such as `updates`, `fix stuff` or `wip` for completed work.
+- When creating a GitHub issue, search open and closed issues for a duplicate first. Use the same conventional prefix in the title, for example `feat(auth): support passkeys` or `fix(api): reject expired tokens`.
+- Issue bodies state the problem and user impact, observable acceptance criteria, relevant constraints or dependencies, and the check that will prove completion. Bug issues also include reproduction steps, expected versus actual behaviour and the relevant environment. Keep implementation ideas separate from requirements and omit sections that add no information.
+- Reuse the repository's existing labels and issue forms when present. Link completed work with GitHub closing syntax such as `Closes #123` in the pull-request description or commit body when automatic closure is intended.
 
 ## Dedicated validation agents
 
