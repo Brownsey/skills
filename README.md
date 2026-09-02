@@ -49,6 +49,22 @@ These links open the original GitHub skill directories at the exact versions inc
 
 `fullstack-delivery`, `hexagonal-architecture`, `python-quality` and `personal-skill-library` are original skills maintained in this repository. No full Superpowers plugin or automatic test-healing loop is installed. Upstream testing skills remain unchanged; the global instructions preserve acceptance criteria, require independent execution and prevent unnecessary repeat runs.
 
+## Give this repository to an agent
+
+On a fresh Windows device, point the agent at this README and use this request:
+
+> Set up `https://github.com/Brownsey/skills.git` on this device using its README. Reuse an existing clean clone whose `origin` matches; otherwise clone it into a permanent user-owned folder. Do not overwrite or delete an existing skill directory. Run the repository installer with global instructions, check the listed CLI tools, apply the Vercel MCP instructions, and ask me only for browser-based account consent when required. Verify the installed skill links, managed global-instruction block, Git remote and clean repository state. Report the clone path, skill destination, tool/authentication status and anything that still needs my action.
+
+The agent should perform this sequence:
+
+1. Confirm Windows, Git, PowerShell 5.1 or later, and Codex are available. Install missing programs only through the documented sources or report the blocker.
+2. Find an existing clone by its `origin`, not by assuming a drive or username. Preserve local edits. With a clean matching clone, run `git pull --ff-only`; otherwise clone the repository into a permanent folder and keep it there because installed skills point into it.
+3. From the clone, run `setup/install.ps1 -IncludeGlobalInstructions`. Its default skill destination is the current per-user Codex discovery directory, `$env:USERPROFILE\.agents\skills`. If the device deliberately uses another discovery directory, pass that verified path with `-SkillsDirectory`.
+4. Run `setup/check-tools.ps1`, then follow `cli/README.md` and `mcp/README.md`. Programs, OAuth consent and credentials are device-local and are never copied from Git.
+5. Verify every installed directory link points into this clone, the marked Brownsey/skills block exists once in the effective personal `AGENTS.md`, and unrelated files or instructions remain intact. Newly created links are junctions; matching existing junctions or symbolic links are preserved. Restart Codex and test `personal-skill-library` in a fresh task when catalogue refresh is needed.
+
+The installer intentionally stops on conflicting directories, duplicate skill names or malformed instruction markers. An agent should report the exact path and preserve it rather than replacing it automatically.
+
 ## Set up another Windows machine
 
 Install Git and Codex, and make sure Git can access your GitHub account. Clone this repository into a convenient local folder, then open PowerShell in that clone:
@@ -56,13 +72,25 @@ Install Git and Codex, and make sure Git can access your GitHub account. Clone t
 ```powershell
 git clone https://github.com/Brownsey/skills.git
 cd skills
-.\setup\install.ps1 -IncludeGlobalInstructions
+.\setup\install.ps1 `
+  -SkillsDirectory "$env:USERPROFILE\.agents\skills" `
+  -IncludeGlobalInstructions
 .\setup\check-tools.ps1
 ```
 
 The installer supports Windows PowerShell 5.1 and PowerShell 7. It reads both `skills/` and `third-party/skills/` and creates a junction for each skill under `$env:USERPROFILE\.agents\skills`, pointing into this clone. Junctions normally do not require administrator rights or Windows Developer Mode. Keep the clone in place after installing it.
 
 The optional `-IncludeGlobalInstructions` switch adds or updates the marked Brownsey/skills block in `$env:CODEX_HOME\AGENTS.md`, or `$env:USERPROFILE\.codex\AGENTS.md` when CODEX_HOME is unset. Existing content outside that block is preserved, and the file is backed up before any change. Edit shared preferences in `global/AGENTS.md`, then rerun the installer on each device.
+
+Finish the device-specific parts when needed:
+
+```powershell
+gh auth status
+codex mcp get vercel
+codex mcp list
+```
+
+If GitHub CLI or Vercel MCP is absent or unauthenticated, follow [CLI setup](cli/README.md) and [MCP setup](mcp/README.md). Browser consent cannot be synced and must be completed separately on each device.
 
 If local policy blocks script execution, follow that device's PowerShell policy rather than changing it automatically. You can still inspect the script and ask Codex to help install it.
 
