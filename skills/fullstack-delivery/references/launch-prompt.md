@@ -6,6 +6,7 @@ Use the original brief as the source of truth. Fill factual fields and omit opti
 Use $fullstack-delivery to implement and deploy this app.
 
 Profile: light [or medium / high]
+Delivery mode: rapid [omit for normal scheduling]
 Original brief: [paste the complete brief]
 Starting repository: [current workspace or supplied repository]
 Deliverables: [required code, URL, documentation and other outputs]
@@ -23,14 +24,23 @@ Use the default two-worker parallel implementation once the scaffold and contrac
 Use disjoint file ownership. All implementation, research, validation and review
 agents are leaves and do not delegate.
 
+In rapid mode, pipeline stable surfaces directly into independent validation.
+Run narrow changed-surface checks first, then one full surface gate after fixes.
+Reuse the lead-managed install, server, build and isolated fixtures where safe.
+Assign the aggregate production build/static gate to one validator and never rerun
+an identical command against an unchanged snapshot.
+For UI-heavy work with four slots, split frontend into visual-foundation and
+interaction workers only after defining their component contracts and disjoint files;
+otherwise retain one frontend worker.
+
 When material repository or external research is needed, send a bounded read-only
 research agent to gather authoritative evidence while unaffected implementation
 continues. Resolve contract, dependency, security or data-model findings before
 workers implement the affected decision.
 
 Define done through observable acceptance criteria and use test-first checks.
-After implementation, use separate frontend/backend validation agents for the
-affected surfaces. Run them concurrently when their environments are independent,
+Use separate frontend/backend validation agents for the affected surfaces. Start
+each when its implementation surface is stable and run them concurrently when their environments are independent,
 then use a separate read-only reviewer of the settled code/tests.
 Validators may add missing tests in assigned files but return production defects
 to the implementation owner. Required failing tests must not be skipped or weakened.
@@ -42,6 +52,8 @@ This request authorises implementing the brief and deploying to the target above
 Deploy a runnable scaffold early. Connect the first real frontend/backend flow
 early, then finish required behaviour, verification and handoff.
 Return the deployed URL, checks, requirement coverage, known gaps and trade-offs.
+Reserve the final critical-path window for validation, one aggregate gate, final
+review, deployment and URL verification; stop optional work when it begins.
 ```
 
 For planning only, use this separate prompt:

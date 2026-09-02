@@ -19,6 +19,8 @@ Use the requested profile; default to `light`. Profiles control implementation d
 
 All profiles support real persistence, authentication and external integrations when required. A profile never authorises adding unrequested product features. If requested scope exceeds the selected approach, explain the concrete implication without silently discarding requirements or switching profiles.
 
+When the user asks for a rapid or time-boxed implementation, enable **rapid delivery mode** from the shared instructions. This is a scheduling overlay, not another profile: it keeps the chosen depth and acceptance criteria while starting independent work and feedback sooner. Show the user the compact contract, priorities and worker split at dispatch; route later steering through the lead while Codex continues agent scheduling and file ownership.
+
 ## Brief to plan
 
 1. Preserve the original brief and supplied repository. Extract mandatory requirements and define done for each: observable success, relevant failure/permission cases, test layer, check command and owner. Expected results come from the brief rather than the generated implementation. Keep optional features separate; do not add speculative scope while refining the prompt.
@@ -47,6 +49,8 @@ Give each worker its relevant requirements, profile, contract, owned files, assu
 
 For new UI or a substantial redesign, the frontend worker uses `frontend-design` when available to establish a compact visual direction before coding. It shares that direction with the lead and frontend validator; preserve existing design systems and the main user task.
 
+For UI-heavy work with four available slots, the lead may split frontend ownership into two workers after recording typography, palette, tokens, breakpoints, page structure, component names/props, required states and the signature interaction. One worker owns visual foundations such as layout, tokens, shared UI primitives, static assets and purposeful motion; the other owns feature screens, forms, client data flow, states and component tests. Use `animate` only when motion serves feedback, spatial continuity or state understanding. Keep a single frontend worker when file or component ownership cannot be made disjoint.
+
 Frontend fixtures may unblock UI work behind the agreed API boundary. Label them as temporary and replace them with the real backend before delivery. Integrate the first real user journey early, then expand required behaviour.
 
 When material repository or external research is needed, dispatch a bounded read-only leaf research subagent while implementation continues on unaffected work. Give it the exact uncertainty, authoritative-source preference and expected evidence. Settle findings that affect the shared contract, dependency choice, security or data model before workers implement that decision.
@@ -55,9 +59,13 @@ In a shared workspace, workers do not independently commit, reset, stash, change
 
 ## Independent validation
 
-Apply the dedicated validation-agent gate from the shared global instructions. After implementation, allocate separate frontend and backend validators for the affected surfaces; these must be distinct from the implementation authors. Run the validators concurrently when slots, build outputs, services and test data are independent; otherwise run them sequentially. Give them the original acceptance criteria and contract, not just the implementation summary.
+Apply the dedicated validation-agent gate from the shared global instructions. Allocate separate frontend and backend validators for the affected surfaces; these must be distinct from the implementation authors. Normal delivery may start them after implementation settles; rapid delivery follows the surface pipeline below. Run the validators concurrently when slots, build outputs, services and test data are independent; otherwise run them sequentially. Give them the original acceptance criteria and contract, not just the implementation summary.
 
 Validators run the required checks and may add missing tests in assigned test files. Production fixes return to the implementation owner. Review and audit work runs inside dedicated validation/review subagents, never in the implementation worker. The lead applies `requesting-code-review` to dispatch the final read-only assessment of the settled code and tests. Verify an integrated journey against the real backend and required persistence. Recheck affected behavior after fixes; a green mocked suite or a skipped acceptance case is insufficient.
+
+In rapid delivery mode, pipeline validation rather than treating it as one final phase. Start a surface validator as soon as its implementation handoff and contract inputs are stable and a slot is free, provided its services, build output and test data are independent of unfinished work. Early validation covers independent criteria; reactivate the same validator for integration-dependent checks. Run the cheapest criterion-specific checks first, return defects immediately with a concise reproduction to the original owner, then run one complete surface gate after fixes settle. Reuse the lead-managed install, long-lived server or preview and isolated fixtures where safe. Assign aggregate build/static checks to one validator and do not duplicate unchanged green checks.
+
+The frontend validator combines applicable browser interaction, desktop/mobile screenshots, accessibility, UI guideline, React performance and motion checks in one pass. The backend validator combines domain, input, authorization, persistence, adapter and selected security or architecture checks. After both surfaces settle, run one real integrated journey. The final reviewer covers requirements, test quality and diff defects without repeating completed specialty audits. It may overlap with a preview deployment or URL check of the same tested snapshot when outputs and test data do not conflict and no irreversible migration runs; Critical or Important findings invalidate the affected evidence and deployment result.
 
 When available, use `test-driven-development`, `playwright-best-practices` and `verification-before-completion` for their relevant roles. Use `hexagonal-architecture` for meaningful business boundaries. See [testing workflow](references/testing-workflow.md) when selecting test layers, defining done or configuring repeatable application checks. Use `python-quality` for Python-specific lint, format, type, test, hook and CI setup when available.
 
@@ -71,11 +79,13 @@ Deploy a coherent scaffold early. Coordinate edits while packaging a deployment 
 
 Prioritise required behaviour, integration and a working deployment. Keep speculative refactors outside scope. Preserve unfinished work and disclose gaps; do not claim incomplete requirements are complete.
 
+In a time-boxed run, reserve the final critical-path window for independent validation, one aggregate gate, final review, deployment and URL verification. Stop optional features, polish, refactors and speculative tests when that window begins. Completion still requires every mandatory criterion, a real-backend integrated journey, no required skips, no unresolved Critical or Important findings and a verified URL when deployment is required.
+
 Before reporting completion:
 
 - Map required behaviour to performed checks or disclosed gaps.
 - Run required build/type/lint checks and relevant tests. Repeat checks when subsequent changes invalidate their evidence, rather than merely to repeat a status update.
-- Use the available Browser skill to exercise the deployed main journey and relevant error/empty/loading states. Verify required persistence across requests or refreshes.
+- Use the available browser tooling to exercise the deployed main journey and relevant error/empty/loading states. Verify required persistence across requests or refreshes.
 - Verify the deliverable URL through its intended access path. A CLI success message is not proof of a working or accessible application.
 - Provide a concise README or handoff with setup, environment variable names, URL, checks and actual trade-offs. Explain the implementation when asked, even in terse chat mode.
 

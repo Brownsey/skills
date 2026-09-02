@@ -1,6 +1,17 @@
 {
   "skills": [
     {
+      "name": "animate",
+      "mode": "copy",
+      "source_url": "https://github.com/emilkowalski/skills",
+      "source_path": "skills/animate",
+      "revision": "d23d7f88a2e21c9e4b1418c7abe420f5c1052ba7",
+      "license": "MIT; upstream root notice at third-party/licenses/emilkowalski-skills-LICENSE.",
+      "local_path": "third-party/skills/animate",
+      "installation": null,
+      "local_changes": []
+    },
+    {
       "name": "frontend-design",
       "mode": "copy",
       "source_url": "https://github.com/anthropics/skills",

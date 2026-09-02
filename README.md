@@ -17,13 +17,13 @@ Stephen's skills, MCP definitions, and CLI tool list, shared between desktop and
 
 Install with `-IncludeGlobalInstructions` to activate the defaults across tasks. Ask for `caveman lite`, `ponytail lite`, or `normal mode` when you want to override them for a task. Add further development skills as your actual workflows become clear.
 
-`fullstack-delivery` provides concise planning, a shared API contract, parallel frontend/backend ownership, early Vercel deployment and final verification. Choose a [light, medium or high profile](skills/fullstack-delivery/references/profiles.md) in its [launch prompt](skills/fullstack-delivery/references/launch-prompt.md). Profiles control implementation depth; all preserve required behaviour. Installing the workflow does not create an app or authenticate with Vercel.
+`fullstack-delivery` provides concise planning, a shared API contract, parallel frontend/backend ownership, early Vercel deployment and final verification. Choose a [light, medium or high profile](skills/fullstack-delivery/references/profiles.md) in its [launch prompt](skills/fullstack-delivery/references/launch-prompt.md). Add rapid delivery mode for pipelined validation, shared runtime reuse and a UI-heavy visual/interaction split. Profiles still control implementation depth; rapid mode changes scheduling only. Installing the workflow does not create an app or authenticate with Vercel.
 
 `python-quality` establishes or repairs Python gates with `uv`, Ruff, pytest, optional project-pinned type checking, fast commit hooks and one CI-backed verification command. Its [workflow](skills/python-quality/references/workflow.md) is informed by [Brownsey/lendable](https://github.com/Brownsey/lendable) and current Astral documentation.
 
 The imported Vercel skills cover React best practices, UI guideline reviews and Vercel CLI operations. They remain direct upstream copies; use only the guidance relevant to the current task.
 
-Anthropic's `frontend-design` guides new UI and substantial redesigns with a compact visual direction, intentional typography and useful interaction states. Shared instructions preserve existing design systems and require the frontend validation agent to inspect the running app and desktop/mobile screenshots for substantive UI changes. Minimal implementation must preserve the agreed UX quality. The upstream skill and its Apache-2.0 licence remain unchanged.
+Anthropic's `frontend-design` guides new UI and substantial redesigns with a compact visual direction, intentional typography and useful interaction states. Emil Kowalski's `animate` adds focused motion guidance only when transitions or gestures serve the interface. Shared instructions preserve existing design systems and require the frontend validation agent to inspect the running app and desktop/mobile screenshots for substantive UI changes. Minimal implementation must preserve the agreed UX quality. Both upstream skills and their licences remain unchanged.
 
 `hexagonal-architecture` ports the useful boundary and dependency-injection guidance from the personal Claude skill to Python and TypeScript/Next.js. It keeps business rules testable without imposing placeholder layers. Shared instructions delegate substantive implementation to bounded workers, send independent research to read-only subagents while unaffected work continues, and run validation and review skills in agents separate from implementation authors. Read the [testing workflow and definition-of-done example](skills/fullstack-delivery/references/testing-workflow.md) for frontend/backend test selection and application CI guidance.
 
@@ -33,6 +33,7 @@ These links open the original GitHub skill directories at the exact versions inc
 
 | Skill | Original GitHub source |
 | --- | --- |
+| Animate | [emilkowalski/skills](https://github.com/emilkowalski/skills/tree/d23d7f88a2e21c9e4b1418c7abe420f5c1052ba7/skills/animate) |
 | Frontend Design | [anthropics/skills](https://github.com/anthropics/skills/tree/53048666b05b4799081517d00e09e0a2dd688678/skills/frontend-design) |
 | Caveman | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/df2ccd85c94ec3c8289cb62ac020d241ccfb0c60/skills/caveman) |
 | Ponytail | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/2ed6c52c9d7e5e56942508591085fd45dea277d3/skills/ponytail) |
