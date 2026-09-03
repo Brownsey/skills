@@ -35,15 +35,25 @@ Optional alongside Vercel MCP, particularly for deploying a local working tree. 
 
 ## Supabase CLI
 
-Use the CLI against hosted Supabase projects. Docker is not part of this workflow. It requires Node.js 20 or later. Pin the CLI in each application so its lockfile makes the command reproducible:
+Use the CLI against hosted Supabase projects. Docker is not part of this workflow. For a device-wide `supabase` command on Windows, use Supabase's official Scoop bucket:
+
+```powershell
+scoop bucket add supabase https://github.com/supabase/scoop-bucket.git
+scoop install supabase
+supabase --version
+supabase login
+```
+
+Install Scoop from [its official site](https://scoop.sh) when it is not already available. Account authentication remains device-local.
+
+For reproducible application commands, also pin the CLI in each application. The npm form requires Node.js 20 or later:
 
 ```powershell
 npm install --save-dev --save-exact supabase
-npx supabase login
 npx supabase orgs list --output json
 ```
 
-`supabase login` stores account credentials outside the repository. Never commit access tokens, database passwords, secret keys or generated environment files.
+Use `supabase ...` for the device-wide installation or `npx supabase ...` for the project-pinned version. Login stores account credentials outside the repository. Never commit access tokens, database passwords, secret keys or generated environment files.
 
 Create and link a hosted project after the application name, organization and region are known:
 

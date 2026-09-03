@@ -15,12 +15,12 @@
       "required": false
     },
     {
-      "name": "Supabase CLI runner",
-      "command": "npx",
+      "name": "Supabase CLI",
+      "command": "supabase",
       "purpose": "Create and manage hosted Supabase projects, migrations and generated types without a local database.",
-      "installation": "Install Node.js 20 or later, then add a pinned CLI to each app with npm install --save-dev --save-exact supabase. Run it as npx supabase and authenticate separately on each device.",
+      "installation": "On Windows, install Scoop from https://scoop.sh, then run: scoop bucket add supabase https://github.com/supabase/scoop-bucket.git; scoop install supabase. Authenticate separately with supabase login. Also pin the CLI in each app for reproducible commands; see cli/README.md.",
       "required": false,
-      "project_scoped": true
+      "project_scoped": false
     },
     {
       "name": "Git",
