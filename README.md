@@ -29,11 +29,11 @@ codex mcp get vercel
 codex mcp list
 ```
 
-To allow up to 15 subagents in each task, add this to `$env:USERPROFILE\.codex\config.toml` on every device, then restart Codex:
+To allow up to 25 subagents in each task, add this to `$env:USERPROFILE\.codex\config.toml` on every device, then restart Codex:
 
 ```toml
 [agents]
-max_concurrent_threads_per_session = 15
+max_concurrent_threads_per_session = 25
 ```
 
 Follow [CLI setup](cli/README.md) and [MCP setup](mcp/README.md) for missing tools or authentication. Credentials and OAuth consent are not stored in this repository. Restart Codex and test `personal-skill-library` in a fresh task after adding a skill or refreshing the catalogue.
