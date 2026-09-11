@@ -16,6 +16,8 @@ Read the shared baseline and the selected profile. Profiles describe engineering
 
 Choose direct implementations and the smallest complete data model. Reuse components and installed utilities; add abstractions only when they simplify an actual requirement.
 
+Light changes engineering depth, not delegation intensity. Follow `Delegation-first execution`; use the shared checkout without worktrees by default, exact disjoint file ownership and lead-controlled shared resources.
+
 Use ordinary request/response flows. For a data-backed app, a small Supabase schema and the necessary policies/migrations can be enough. If the brief requires login, implement the real login/session/authorisation flow; do not replace it with a mock to remain light.
 
 Verify the main journey, important validation/error cases, required persistence and deployment. Keep the handoff to setup, results, limitations and a short explanation of the architecture.
