@@ -2,6 +2,30 @@
 
 `tools.json` records programs and setup guidance. Binaries and account credentials stay on each device. Run `../setup/check-tools.ps1` to check command availability.
 
+## Export a Codex task
+
+`export-codex-session.ps1` is a standalone utility, not a skill, so it consumes no model context. It exports the current task plus all direct and nested subagent JSONL logs, writes a manifest, and creates a ZIP:
+
+```powershell
+.\cli\export-codex-session.ps1
+```
+
+The current root task comes from `CODEX_SESSION_ID`, then `CODEX_THREAD_ID`, then `SESSION_ID`. Output defaults to a timestamped folder on the desktop, with `logs.zip` inside it. Inputs can be overridden:
+
+```powershell
+.\cli\export-codex-session.ps1 `
+  -TaskId "<task-id>" `
+  -CodexHome "$env:USERPROFILE\.codex" `
+  -DestinationDirectory "D:\Codex exports" `
+  -IncludeArchived $true `
+  -CreateZip $true `
+  -OutputName "window-manager-session"
+```
+
+Exports are staged beside the destination and published as one directory only after every requested artifact succeeds. If the requested name appears concurrently, the export fails without changing it. Original session IDs remain in the manifest; copied log filenames use bounded, sanitized stems with collision-resistant suffixes.
+
+Raw logs can contain credentials, access tokens, secrets, personal or PII data, prompts, command output, local paths, and file contents. Review and redact them before sharing.
+
 ## GitHub CLI
 
 Use Git for commits/push/pull and GitHub CLI for repository, issue, pull request and workflow operations. Install on Windows:
