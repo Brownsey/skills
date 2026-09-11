@@ -54,6 +54,5 @@ Map tests to observable acceptance criteria. Prefer fast domain and use-case tes
 
 Do not impose an arbitrary coverage percentage. If a project adopts a threshold, choose it from the behaviour and risk that the suite is expected to cover, and exclude generated code and tooling from the measured application source.
 
-The initial pattern was informed by [Brownsey/lendable](https://github.com/Brownsey/lendable): retain its useful central `pyproject.toml`, `uv.lock` and cross-platform task entry point while closing the observed gaps around tests, format checking, pinned type checking and CI.
 
 Sources: [uv projects and lockfiles](https://docs.astral.sh/uv/concepts/projects/sync/), [uv in GitHub Actions](https://docs.astral.sh/uv/guides/integration/github/), [Ruff pre-commit integration](https://docs.astral.sh/ruff/tutorial/), [ty installation](https://docs.astral.sh/ty/installation/).

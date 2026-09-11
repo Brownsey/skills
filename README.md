@@ -1,39 +1,93 @@
 # Personal Codex setup
 
-Stephen's skills, MCP definitions, and CLI tool list, shared between desktop and laptop through [Brownsey/skills](https://github.com/Brownsey/skills).
+Skills, shared `AGENTS.md` instructions, CLI setup and MCP configuration synced through [Brownsey/skills](https://github.com/Brownsey/skills).
 
-## Contents
+## Fresh Windows device
 
-- `skills/`: original personal skills; each folder contains a `SKILL.md`.
-- `third-party/skills/`: unchanged upstream skill directories, pinned to recorded commits.
-- `global/AGENTS.md`: shared personal expectations, installed as a managed block in your personal Codex instructions.
-- `AGENTS.md`: instructions for maintaining this repository.
-- `setup/install.ps1`: a repeatable Windows installer.
-- `cli/tools.json`: command-line tools and installation guidance; `setup/check-tools.ps1` checks availability.
-- `mcp/servers.toml`: portable Vercel MCP configuration. See `mcp/README.md` for installation.
-- `third-party/sources.json`: source revisions, licences, and local changes for imported skills. See `third-party/README.md`.
+Give an agent this request:
 
-`personal-skill-library` teaches Codex this library's layout and installation/sync workflow. Pinned copies of `caveman` and `ponytail` provide the default ultra modes: shortest clear chat replies and minimal implementations. The upstream files are unchanged under `third-party/skills/`; ultra preferences live in `global/AGENTS.md`. Sources and licences are recorded in `third-party/sources.json`.
+> Set up `https://github.com/Brownsey/skills.git` using its README. Reuse a clean clone with the matching `origin`, or clone it into a permanent user-owned folder. Preserve local edits and conflicting skill directories. Install the skills and shared instructions, check the listed CLI tools, configure Vercel MCP, and ask me for browser consent when required. Verify the links, effective personal `AGENTS.md`, Git remote and repository status. Report the installed paths and anything that still needs my action.
 
-Install with `-IncludeGlobalInstructions` to activate the defaults across tasks. Ask for `caveman lite`, `ponytail lite`, or `normal mode` when you want to override them for a task. Add further development skills as your actual workflows become clear.
+Manual setup:
 
-`fullstack-delivery` provides a one-pass brief interrogation, concise planning, shared API/UI contracts, dependency-driven parallel ownership, early Vercel deployment and final verification. Choose a [light, medium or high profile](skills/fullstack-delivery/references/profiles.md) in its [launch prompt](skills/fullstack-delivery/references/launch-prompt.md). Add rapid delivery mode for pipelined validation, shared runtime reuse and UI-heavy visual/interaction workstreams. Profiles still control implementation depth; rapid mode changes scheduling only. Worker count follows independent critical-path work rather than a fixed slot count. The selected Superpowers testing and review skills run inside this workflow rather than as a separate planning controller. Installing the workflow does not create an app or authenticate with Vercel.
+```powershell
+git clone https://github.com/Brownsey/skills.git
+cd skills
+.\setup\install.ps1 -IncludeGlobalInstructions
+.\setup\check-tools.ps1
+```
 
-Tune rapid delivery with representative rehearsals rather than agent-count intuition. Compare mandatory requirement coverage, elapsed time, tokens or credits where visible, agent starts, merge conflicts, repeated commands, defect cycles and unresolved findings. Keep changes that improve verified outcomes per wall-clock minute.
+The installer supports Windows PowerShell 5.1 and PowerShell 7. It links every skill from `skills/` and `third-party/skills/` into `$env:USERPROFILE\.agents\skills`. Use `-SkillsDirectory <verified-path>` only when the device uses a different Codex skill directory. Keep the clone in place because the installed links point into it.
 
-`python-quality` establishes or repairs Python gates with `uv`, Ruff, pytest, optional project-pinned type checking, fast commit hooks and one CI-backed verification command. Its [workflow](skills/python-quality/references/workflow.md) is informed by [Brownsey/lendable](https://github.com/Brownsey/lendable) and current Astral documentation.
+`-IncludeGlobalInstructions` updates the marked Brownsey/skills block in `$env:CODEX_HOME\AGENTS.md`, or `$env:USERPROFILE\.codex\AGENTS.md` when `CODEX_HOME` is unset. Existing content is preserved and changed files are backed up. The installer stops instead of replacing conflicting links, duplicate skill names or malformed instruction markers.
 
-The imported Vercel skills cover React best practices, UI guideline reviews and Vercel CLI operations. They remain direct upstream copies; use only the guidance relevant to the current task.
+Complete device-local setup as needed:
 
-Anthropic's `frontend-design` guides new UI and substantial redesigns with a compact visual direction, intentional typography and useful interaction states. Emil Kowalski's `animate` adds focused motion guidance only when transitions or gestures serve the interface. Shared instructions preserve existing design systems and require the frontend validation agent to inspect the running app and desktop/mobile screenshots for substantive UI changes. Minimal implementation must preserve the agreed UX quality. Both upstream skills and their licences remain unchanged.
+```powershell
+gh auth status
+codex mcp get vercel
+codex mcp list
+```
 
-`hexagonal-architecture` ports the useful boundary and dependency-injection guidance from the personal Claude skill to Python and TypeScript/Next.js. It keeps business rules testable without imposing placeholder layers. Shared instructions delegate substantive implementation to bounded workers, send independent research to read-only subagents while unaffected work continues, and run validation and review skills in agents separate from implementation authors. Read the [testing workflow and definition-of-done example](skills/fullstack-delivery/references/testing-workflow.md) for frontend/backend test selection and application CI guidance.
+To allow up to 15 subagents in each task, add this to `$env:USERPROFILE\.codex\config.toml` on every device, then restart Codex:
 
-## Original skill sources
+```toml
+[agents]
+max_concurrent_threads_per_session = 15
+```
 
-These links open the original GitHub skill directories at the exact versions included here. Copies live under `third-party/skills/`; source revisions and licence notices are recorded in [third-party/sources.json](third-party/sources.json).
+Follow [CLI setup](cli/README.md) and [MCP setup](mcp/README.md) for missing tools or authentication. Credentials and OAuth consent are not stored in this repository. Restart Codex and test `personal-skill-library` in a fresh task after adding a skill or refreshing the catalogue.
 
-| Skill | Original GitHub source |
+## Sync devices
+
+Before work:
+
+```powershell
+git status
+git pull --ff-only
+.\setup\install.ps1 -IncludeGlobalInstructions
+```
+
+Preserve local edits if the pull cannot fast-forward. Do not reset or force-push to resolve device divergence.
+
+After work:
+
+```powershell
+git diff
+git add <intended-files>
+git diff --cached
+git commit -m "<conventional-commit>"
+git push
+```
+
+Existing skill edits are visible through their links immediately. Run the installer again for new or relocated skills and changed global instructions.
+
+## Repository layout
+
+| Path | Contents |
+| --- | --- |
+| `skills/` | Original personal skills |
+| `third-party/skills/` | Unchanged upstream skills |
+| `third-party/sources.json` | Upstream URLs, revisions and licences |
+| `third-party/licenses/` | Upstream root licence notices |
+| `global/AGENTS.md` | Shared personal instructions |
+| `setup/install.ps1` | Skill and global-instruction installer |
+| `setup/check-tools.ps1` | CLI availability check |
+| `cli/` | CLI manifest, setup and utilities |
+| `mcp/` | Portable MCP definitions and setup |
+
+Original skills:
+
+- [`fullstack-delivery`](skills/fullstack-delivery/SKILL.md) — profiles and [launch prompt](skills/fullstack-delivery/references/launch-prompt.md)
+- [`hexagonal-architecture`](skills/hexagonal-architecture/SKILL.md)
+- [`personal-skill-library`](skills/personal-skill-library/SKILL.md)
+- [`python-quality`](skills/python-quality/SKILL.md)
+
+## Upstream skill sources
+
+Exact revisions and licences are recorded in [third-party/sources.json](third-party/sources.json).
+
+| Skill | Source |
 | --- | --- |
 | Animate | [emilkowalski/skills](https://github.com/emilkowalski/skills/tree/d23d7f88a2e21c9e4b1418c7abe420f5c1052ba7/skills/animate) |
 | Frontend Design | [anthropics/skills](https://github.com/anthropics/skills/tree/53048666b05b4799081517d00e09e0a2dd688678/skills/frontend-design) |
@@ -47,107 +101,16 @@ These links open the original GitHub skill directories at the exact versions inc
 | Requesting Code Review | [obra/superpowers](https://github.com/obra/superpowers/tree/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/skills/requesting-code-review) |
 | Playwright Best Practices | [currents-dev/playwright-best-practices-skill](https://github.com/currents-dev/playwright-best-practices-skill/tree/283d5cbc5d11aac1abda058b16ad22c317d54dc0/playwright-best-practices) |
 
-`fullstack-delivery`, `hexagonal-architecture`, `python-quality` and `personal-skill-library` are original skills maintained in this repository. No full Superpowers plugin or automatic test-healing loop is installed. Upstream testing skills remain unchanged; the global instructions preserve acceptance criteria, require independent execution and prevent unnecessary repeat runs.
+## Add or update a skill
 
-## Give this repository to an agent
+Use `skill-creator` for original skills. Store them in `skills/<name>/SKILL.md`, use relative resource paths, validate them, then rerun the installer.
 
-On a fresh Windows device, point the agent at this README and use this request:
+Keep imported skills unchanged in `third-party/skills/<name>/`. Record their exact source revision in `third-party/sources.json` and preserve the upstream root licence in `third-party/licenses/`.
 
-> Set up `https://github.com/Brownsey/skills.git` on this device using its README. Reuse an existing clean clone whose `origin` matches; otherwise clone it into a permanent user-owned folder. Do not overwrite or delete an existing skill directory. Run the repository installer with global instructions, check the listed CLI tools, apply the Vercel MCP instructions, and ask me only for browser-based account consent when required. Verify the installed skill links, managed global-instruction block, Git remote and clean repository state. Report the clone path, skill destination, tool/authentication status and anything that still needs my action.
+Keep application-specific commands in the application repository. Do not commit credentials, caches, local Codex configuration or session history.
 
-The agent should perform this sequence:
+## CLI and MCP
 
-1. Confirm Windows, Git, PowerShell 5.1 or later, and Codex are available. Install missing programs only through the documented sources or report the blocker.
-2. Find an existing clone by its `origin`, not by assuming a drive or username. Preserve local edits. With a clean matching clone, run `git pull --ff-only`; otherwise clone the repository into a permanent folder and keep it there because installed skills point into it.
-3. From the clone, run `setup/install.ps1 -IncludeGlobalInstructions`. Its default skill destination is the current per-user Codex discovery directory, `$env:USERPROFILE\.agents\skills`. If the device deliberately uses another discovery directory, pass that verified path with `-SkillsDirectory`.
-4. Run `setup/check-tools.ps1`, then follow `cli/README.md` and `mcp/README.md`. Programs, OAuth consent and credentials are device-local and are never copied from Git.
-5. Verify every installed directory link points into this clone, the marked Brownsey/skills block exists once in the effective personal `AGENTS.md`, and unrelated files or instructions remain intact. Newly created links are junctions; matching existing junctions or symbolic links are preserved. Restart Codex and test `personal-skill-library` in a fresh task when catalogue refresh is needed.
+`setup/install.ps1` does not install programs or apply MCP configuration. Use [cli/README.md](cli/README.md), [cli/tools.json](cli/tools.json), [mcp/README.md](mcp/README.md) and [mcp/servers.toml](mcp/servers.toml) on each device.
 
-The installer intentionally stops on conflicting directories, duplicate skill names or malformed instruction markers. An agent should report the exact path and preserve it rather than replacing it automatically.
-
-## Set up another Windows machine
-
-Install Git and Codex, and make sure Git can access your GitHub account. Clone this repository into a convenient local folder, then open PowerShell in that clone:
-
-```powershell
-git clone https://github.com/Brownsey/skills.git
-cd skills
-.\setup\install.ps1 `
-  -SkillsDirectory "$env:USERPROFILE\.agents\skills" `
-  -IncludeGlobalInstructions
-.\setup\check-tools.ps1
-```
-
-The installer supports Windows PowerShell 5.1 and PowerShell 7. It reads both `skills/` and `third-party/skills/` and creates a junction for each skill under `$env:USERPROFILE\.agents\skills`, pointing into this clone. Junctions normally do not require administrator rights or Windows Developer Mode. Keep the clone in place after installing it.
-
-The optional `-IncludeGlobalInstructions` switch adds or updates the marked Brownsey/skills block in `$env:CODEX_HOME\AGENTS.md`, or `$env:USERPROFILE\.codex\AGENTS.md` when CODEX_HOME is unset. Existing content outside that block is preserved, and the file is backed up before any change. Edit shared preferences in `global/AGENTS.md`, then rerun the installer on each device.
-
-Finish the device-specific parts when needed:
-
-```powershell
-gh auth status
-codex mcp get vercel
-codex mcp list
-```
-
-If GitHub CLI or Vercel MCP is absent or unauthenticated, follow [CLI setup](cli/README.md) and [MCP setup](mcp/README.md). Browser consent cannot be synced and must be completed separately on each device.
-
-If local policy blocks script execution, follow that device's PowerShell policy rather than changing it automatically. You can still inspect the script and ask Codex to help install it.
-
-Restart Codex if new skills are not visible. In a fresh task, ask it to use `personal-skill-library` and report the source it read. That confirms discovery; the installer's success alone does not prove a running Codex session has refreshed its catalogue.
-
-## Work across devices
-
-Before editing, open PowerShell in the clone:
-
-```powershell
-git status
-git pull --ff-only
-.\setup\install.ps1 -IncludeGlobalInstructions
-```
-
-Start from a clean working tree. If pulling stops because the two devices have different commits, inspect and resolve the divergence before continuing; don't force-push or discard work.
-
-After editing, inspect the changes and stage the specific files you want to share:
-
-```powershell
-git switch -c brownsey_refine-personal-skill-workflow
-git diff
-git add skills/personal-skill-library/SKILL.md
-git diff --cached
-git commit -m "docs(skills): refine personal skill workflow"
-git push -u origin HEAD
-```
-
-The file and commit message above are examples; select the actual files you changed. On the other machine, pull and rerun the installer. GitHub sync is explicit, through push and pull. Offline edits stay local until pushed.
-
-Existing skill edits are visible through the junction immediately. Newly added skills need another installer run. Changes to shared global instructions also need another run. The installer migrates this library's old `skills/<name>` junctions to `third-party/skills/<name>` when applicable. Other relocations or removals require inspecting and removing only the old link; unrelated folders and conflicting links are protected.
-
-## Add a skill
-
-Open this repository in Codex and ask, for example:
-
-> Use skill-creator to create a skill in this repository for my recurring workflow: [describe the actual task, conventions, and expected result].
-
-Store it as `skills/<name>/SKILL.md`. Describe when it applies in its frontmatter and put its procedure in the body. Use relative paths for supporting files. Try both requests that should trigger it and requests that should not, then install and commit it.
-
-Keep application-specific conventions in the application's own repository. Keep credentials, local Codex settings, caches, and session history out of this repository.
-
-## MCP servers, CLIs, and third-party skills
-
-The repository stores reproducible definitions and instructions. Each device installs its own programs and authenticates separately. `setup/install.ps1` installs skills and optional shared instructions only; it does not apply MCP configuration or install CLI programs.
-
-Use `setup/check-tools.ps1` to see which listed commands are available and how to install missing ones. Use GitHub CLI for repository, pull request and workflow operations; normal Git push/pull can continue using Git Credential Manager. Follow [CLI setup](cli/README.md) on each device.
-
-Supabase uses a remote-only workflow by default: authenticate the project-pinned CLI, create and link a hosted project, commit migrations and apply them with `db push`. Docker and the local Supabase stack are excluded unless explicitly requested.
-
-Tool sources: [GitHub CLI on GitHub](https://github.com/cli/cli), [Vercel CLI on GitHub](https://github.com/vercel/vercel), [Supabase CLI setup](https://supabase.com/docs/guides/local-development/cli/getting-started), and [official Vercel MCP setup](https://vercel.com/docs/agent-resources/vercel-mcp).
-
-For MCP servers, maintain selected definitions in `mcp/servers.toml`, then apply the relevant server entries to the device's Codex config using `mcp/README.md`. Vercel is the selected server; each device needs its own configuration and OAuth consent.
-
-Keep imported skills unchanged under `third-party/skills/`, original workflows under `skills/`, and personal preferences in `global/AGENTS.md`. Preserve upstream licence notices and exact source revisions. There is no automatic upstream updater.
-
-## References
-
-- [Official skill discovery and authoring guidance](https://learn.chatgpt.com/docs/build-skills)
-- [Official AGENTS.md guidance](https://learn.chatgpt.com/docs/agent-configuration/agents-md)
+The Supabase workflow uses hosted projects and remote migrations. Docker and the local Supabase stack are excluded unless explicitly requested.
