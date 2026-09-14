@@ -79,6 +79,7 @@ Existing skill edits are visible through their links immediately. Run the instal
 Original skills:
 
 - [`fullstack-delivery`](skills/fullstack-delivery/SKILL.md) — profiles and [launch prompt](skills/fullstack-delivery/references/launch-prompt.md)
+- [`fullstack-efficient`](skills/fullstack-efficient/SKILL.md) — Terra routine implementation, Sol substantial implementation, Astra planning/hardest implementation/independent review. Use `Use $fullstack-efficient, light profile, to implement: ...`.
 - [`hexagonal-architecture`](skills/hexagonal-architecture/SKILL.md)
 - [`personal-skill-library`](skills/personal-skill-library/SKILL.md)
 - [`python-quality`](skills/python-quality/SKILL.md)
