@@ -1,6 +1,17 @@
 {
   "skills": [
     {
+      "name": "archify",
+      "mode": "copy",
+      "source_url": "https://github.com/tt-a1i/archify",
+      "source_path": "archify",
+      "revision": "c826e6c3a7abad19c0f3cd1ca57207d54b1ad8de",
+      "license": "MIT; bundled notice retained in the skill and upstream root notice at third-party/licenses/archify-LICENSE.",
+      "local_path": "third-party/skills/archify",
+      "installation": null,
+      "local_changes": []
+    },
+    {
       "name": "animate",
       "mode": "copy",
       "source_url": "https://github.com/emilkowalski/skills",

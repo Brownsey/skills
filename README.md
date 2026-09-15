@@ -79,10 +79,12 @@ Existing skill edits are visible through their links immediately. Run the instal
 Original skills:
 
 - [`fullstack-delivery`](skills/fullstack-delivery/SKILL.md) — profiles and [launch prompt](skills/fullstack-delivery/references/launch-prompt.md)
-- [`fullstack-efficient`](skills/fullstack-efficient/SKILL.md) — Terra routine implementation, Sol substantial implementation, Astra planning/hardest implementation/independent review. Use `Use $fullstack-efficient, light profile, to implement: ...`.
+- [`fullstack-efficient`](skills/fullstack-efficient/SKILL.md) — Luna read-only discovery, current chat model planning/review, Terra routine implementation, Sol substantial/difficult implementation, Astra exceptional architecture/decisions only. Use `Use $fullstack-efficient, light profile, to implement: ...`.
 - [`hexagonal-architecture`](skills/hexagonal-architecture/SKILL.md)
 - [`personal-skill-library`](skills/personal-skill-library/SKILL.md)
 - [`python-quality`](skills/python-quality/SKILL.md)
+
+Archify creates validated, interactive architecture, workflow, sequence, data-flow and lifecycle diagrams from repository evidence or system descriptions. Shared instructions route architecture requests through it while preserving `hexagonal-architecture` for applicable code-boundary decisions.
 
 ## Upstream skill sources
 
@@ -90,6 +92,7 @@ Exact revisions and licences are recorded in [third-party/sources.json](third-pa
 
 | Skill | Source |
 | --- | --- |
+| Archify | [tt-a1i/archify](https://github.com/tt-a1i/archify/tree/c826e6c3a7abad19c0f3cd1ca57207d54b1ad8de/archify) |
 | Animate | [emilkowalski/skills](https://github.com/emilkowalski/skills/tree/d23d7f88a2e21c9e4b1418c7abe420f5c1052ba7/skills/animate) |
 | Frontend Design | [anthropics/skills](https://github.com/anthropics/skills/tree/53048666b05b4799081517d00e09e0a2dd688678/skills/frontend-design) |
 | Caveman | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/df2ccd85c94ec3c8289cb62ac020d241ccfb0c60/skills/caveman) |
