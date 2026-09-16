@@ -16,7 +16,7 @@ Read the shared baseline and the selected profile. Profiles describe engineering
 
 Choose direct implementations and the smallest complete data model. Reuse components and installed utilities; add abstractions only when they simplify an actual requirement.
 
-Light changes engineering depth, not delegation intensity. Follow `Delegation-first execution`; use the shared checkout without worktrees by default, exact disjoint file ownership and lead-controlled shared resources.
+Light changes engineering depth, not scheduling intensity. Follow the time-first scheduling rules in the main skill; use the shared checkout without worktrees by default, exact disjoint file ownership and lead-controlled shared resources.
 
 Use ordinary request/response flows. For a data-backed app, a small Supabase schema and the necessary policies/migrations can be enough. If the brief requires login, implement the real login/session/authorisation flow; do not replace it with a mock to remain light.
 
@@ -24,7 +24,7 @@ Verify the main journey, important validation/error cases, required persistence 
 
 ## Medium
 
-Use explicit boundaries for recurring business operations and reusable UI patterns across the required workflows. Record the data model and API contract so both workers share the same assumptions.
+Use explicit boundaries for recurring business operations and reusable UI patterns across the required workflows. Record the data model and API contract so all owners share the same assumptions.
 
 When Supabase is the selected provider and the brief needs them, use Supabase Auth for identities, database policies for ownership/roles and Storage for files. Otherwise use the selected provider's equivalents. Include migrations and useful seed data; verify each role's allowed and denied operations. Paginate lists or coordinate multi-step writes when the expected data and behaviour require it.
 
