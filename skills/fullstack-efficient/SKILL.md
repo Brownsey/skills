@@ -35,7 +35,9 @@ Use `fork_turns: "none"` and compact self-contained packets for tier workers, pl
 
 When task size warrants it, keep one canonical immutable brief/contract artifact at a named path. Give packets a stable prefix containing its path, snapshot, contract version, role, model, owned files, resource locks, and expected result; add only criterion-specific excerpts and checks. Send delta-only follow-ups. Validators still receive every applicable criterion and contract detail, never a summary that omits cases.
 
-Workers are leaves: no recursive delegation, independent commits/branches, or competing shared builds. Keep one owner per write set. Reuse a worker only while role and model still fit. A tier change transfers exclusive ownership with current diff and failure evidence; never run two writers against the same files. Keep raw logs local and return the compact handoff from `fullstack-delivery`.
+Keep implementation packets risk-homogeneous. Terra is the default once contracts are settled. Use Sol only when the packet itself requires substantial reasoning about complex state, concurrency, transactions, or authorization-sensitive behaviour; record that reason in the packet. Do not let one difficult item promote adjacent deterministic work. Split disjoint work when that lowers total cost without creating conflicting ownership.
+
+Workers are leaves: no recursive delegation, independent commits/branches, or competing shared builds. Keep one owner per write set. Reassess tier after contract settlement and each validation cycle. Reuse a worker only while role and model still fit. Transfer exclusive ownership from Sol to Terra when the remaining work becomes deterministic; file ownership or handoff convenience alone does not justify retaining Sol. Never run two writers against the same files. Keep raw logs local and return the compact handoff from `fullstack-delivery`.
 
 ## Escalate without restarting
 
