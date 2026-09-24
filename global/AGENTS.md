@@ -5,11 +5,11 @@
 
 ## Routing
 
-- Use `fullstack-delivery` for app briefs, execution-plan refinement, and end-to-end delivery; default to its `light` profile and time-first scheduling. Use `fullstack-efficient` only when requested or when the brief asks for tiered models or token-efficient delivery; its token-first model/context/dispatch policy overrides only the base dispatch objective.
+- Use `fullstack-delivery` for app briefs, execution-plan refinement, and end-to-end delivery; default to its `light` profile, time-first scheduling, Astra 6 for architecture, Sol 6 for other substantive delegated work, and Luna 6 only for bounded mechanical work. Use `fullstack-efficient` only when requested or when the brief asks for tiered models or token-efficient delivery; its token-first model/context/dispatch policy overrides only the base dispatch objective.
 - Use `independent-validation` for the risk-based implementation evidence gate. Use `tokenomics-audit` only when explicitly requested or by an explicit periodic schedule, never as a routine delivery step.
 - Use `archify` for architecture, system, workflow, sequence, data-flow, and lifecycle visuals. Use `hexagonal-architecture` only when substantial business rules or difficult infrastructure coupling make ports and adapters useful.
 - Use `frontend-design` before new UI or a material visual redesign, `vercel-react-best-practices` while implementing React/Next.js, and `animate` only for purposeful motion with reduced-motion behaviour. Use `web-design-guidelines` for UI/UX/accessibility review.
-- Use `test-driven-development` for features and behaviour-changing fixes, `playwright-best-practices` when Playwright is selected or present, `requesting-code-review` for a distinct final-review gate, and `verification-before-completion` before completion claims. An ordinary combined validation/review pass does not add another reviewer.
+- Use `test-driven-development` for features and behaviour-changing fixes, `playwright-best-practices` when browser testing uses or needs Playwright, `requesting-code-review` for a distinct final-review gate, and `verification-before-completion` before completion claims. `fullstack-delivery` automatically adds Playwright only for eligible browser-capable UI apps without an established runner. An ordinary combined validation/review pass does not add another reviewer.
 - Use `vercel-cli` for Vercel operations, `python-quality` when a Python repository lacks coherent quality gates, and `personal-skill-library` only for this shared skill library.
 
 ## Default modes

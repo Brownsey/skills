@@ -79,7 +79,7 @@ Existing skill edits are visible through their links immediately. Run the instal
 Original skills:
 
 - [`fullstack-delivery`](skills/fullstack-delivery/SKILL.md) — profiles and [launch prompt](skills/fullstack-delivery/references/launch-prompt.md)
-- [`fullstack-efficient`](skills/fullstack-efficient/SKILL.md) — token-first model, context and dispatch overlay: Luna mechanical discovery, current chat model planning/judgment, Terra routine work, Sol substantial work, Astra exceptional decisions only
+- [`fullstack-efficient`](skills/fullstack-efficient/SKILL.md) — token-first model, context and dispatch overlay: Astra 6 for architecture, Sol 6 for other substantive work, and Luna 6 for bounded mechanical work
 - [`independent-validation`](skills/independent-validation/SKILL.md) — risk-based lead checks, combined independent passes, or separate validators plus final review
 - [`tokenomics-audit`](skills/tokenomics-audit/SKILL.md) — explicit or scheduled audits of measured usage, structural waste, rework, and cost per accepted outcome
 - [`hexagonal-architecture`](skills/hexagonal-architecture/SKILL.md)

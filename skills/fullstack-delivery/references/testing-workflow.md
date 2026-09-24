@@ -19,7 +19,7 @@ Use `test-driven-development` for feature work and behaviour-changing fixes. For
 
 Use fakes or mocks at external boundaries for fast isolated tests. Mocked tests do not prove database policies, migrations, real adapters, or frontend/backend integration. When frontend and backend form the deliverable, keep at least one relevant complete journey connected to the real backend and isolated non-production data. Verify required persistence across a refresh or later request.
 
-For Next.js, follow the installed version's guidance; Async Server Components may need full-app rather than unit rendering. Automated accessibility checks are partial evidence, so include relevant keyboard and interaction assertions. Use `playwright-best-practices` when Playwright is selected or already present.
+For Next.js, follow the installed version's guidance; Async Server Components may need full-app rather than unit rendering. Automated accessibility checks are partial evidence, so include relevant keyboard and interaction assertions. For a browser-capable UI app, reuse its established browser runner; when none exists, the main skill automatically adds Playwright and a minimal main-journey smoke test. Use `playwright-best-practices` for Playwright setup and tests.
 
 ## Example criterion map
 
