@@ -94,7 +94,7 @@ Exact revisions and licences are recorded in [third-party/sources.json](third-pa
 
 | Skill | Source |
 | --- | --- |
-| Archify | [tt-a1i/archify](https://github.com/tt-a1i/archify/tree/c826e6c3a7abad19c0f3cd1ca57207d54b1ad8de/archify) |
+| Archify | [tt-a1i/archify](https://github.com/tt-a1i/archify/tree/2ab3cae7ac2c2a55d7386ca789d03c4fcd31816c/archify) |
 | Animate | [emilkowalski/skills](https://github.com/emilkowalski/skills/tree/d23d7f88a2e21c9e4b1418c7abe420f5c1052ba7/skills/animate) |
 | Frontend Design | [anthropics/skills](https://github.com/anthropics/skills/tree/53048666b05b4799081517d00e09e0a2dd688678/skills/frontend-design) |
 | Caveman | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/df2ccd85c94ec3c8289cb62ac020d241ccfb0c60/skills/caveman) |
