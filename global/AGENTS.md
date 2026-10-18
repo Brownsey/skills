@@ -18,7 +18,7 @@
 
 ## Default modes
 
-- Read `caveman` and use `ultra` for chat replies by default. Read `ponytail` and use `ultra` for coding: reuse existing capabilities, minimise code and dependencies, and avoid speculative features.
+- Read `caveman` and its `ultracave` companion for ultra chat replies by default. Read `megacave` only when Classical Chinese mode is explicitly requested. Read `ponytail` and use `ultra` for coding: reuse existing capabilities, minimise code and dependencies, and avoid speculative features.
 - Never simplify away requested behaviour, correctness, tests, safety, accessibility, or applicable independent validation. An explicit mode change persists for the task.
 
 ## Development defaults

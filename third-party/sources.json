@@ -5,55 +5,120 @@
       "mode": "copy",
       "source_url": "https://github.com/tt-a1i/archify",
       "source_path": "archify",
-      "revision": "2ab3cae7ac2c2a55d7386ca789d03c4fcd31816c",
+      "revision": "208acba8d412335185b2056fedf54b3405df43fb",
       "license": "MIT; bundled notice retained in the skill and upstream root notice at third-party/licenses/archify-LICENSE.",
       "local_path": "third-party/skills/archify",
       "installation": null,
-      "local_changes": []
+      "local_changes": [],
+      "last_reviewed": {
+        "date": "2026-10-18",
+        "upstream_revision": "208acba8d412335185b2056fedf54b3405df43fb",
+        "content_matches": true
+      },
+      "upstream_notes": "Package scripts referencing ../scripts or npm --prefix .. require the full upstream repository, which is outside this copied skill subtree. Retain three upstream whitespace-only lines in examples/lifecycle-agent-run.html for exact source fidelity. Bundled font and Pele licences/notices are retained in the skill.",
+      "license_files": [
+        {
+          "source_path": "LICENSE",
+          "local_path": "third-party/licenses/archify-LICENSE"
+        },
+        {
+          "source_path": "THIRD_PARTY_NOTICES.md",
+          "local_path": "third-party/licenses/archify-THIRD_PARTY_NOTICES.md"
+        }
+      ]
     },
     {
       "name": "animate",
       "mode": "copy",
       "source_url": "https://github.com/emilkowalski/skills",
       "source_path": "skills/animate",
-      "revision": "d23d7f88a2e21c9e4b1418c7abe420f5c1052ba7",
+      "revision": "2d228630ba1446365f614a108cb8252f1feda202",
       "license": "MIT; upstream root notice at third-party/licenses/emilkowalski-skills-LICENSE.",
       "local_path": "third-party/skills/animate",
       "installation": null,
-      "local_changes": []
+      "local_changes": [],
+      "last_reviewed": {
+        "date": "2026-10-18",
+        "upstream_revision": "2d228630ba1446365f614a108cb8252f1feda202",
+        "content_matches": true
+      },
+      "upstream_notes": "For component-building requests outside its animation scope, SKILL.md conditionally names pick-ui-library, which is not installed in this library. This dependency predates the update; report the missing skill when that branch applies and preserve existing repository component conventions."
     },
     {
       "name": "frontend-design",
       "mode": "copy",
       "source_url": "https://github.com/anthropics/skills",
       "source_path": "skills/frontend-design",
-      "revision": "53048666b05b4799081517d00e09e0a2dd688678",
-      "license": "Apache-2.0; upstream licence retained at third-party/skills/frontend-design/LICENSE.txt.",
+      "revision": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "license": "Apache-2.0; skill licence retained at third-party/skills/frontend-design/LICENSE.txt. Broader upstream repository attribution notice retained at third-party/licenses/anthropic-skills-THIRD_PARTY_NOTICES.md; its tooling/runtime packages are not copied.",
       "local_path": "third-party/skills/frontend-design",
       "installation": null,
-      "local_changes": []
+      "local_changes": [],
+      "last_reviewed": {
+        "date": "2026-10-18",
+        "upstream_revision": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "content_matches": true
+      },
+      "license_files": [
+        {
+          "source_path": "skills/frontend-design/LICENSE.txt",
+          "local_path": "third-party/skills/frontend-design/LICENSE.txt"
+        },
+        {
+          "source_path": "THIRD_PARTY_NOTICES.md",
+          "local_path": "third-party/licenses/anthropic-skills-THIRD_PARTY_NOTICES.md"
+        }
+      ]
     },
     {
       "name": "caveman",
       "mode": "copy",
       "source_url": "https://github.com/JuliusBrussee/caveman",
       "source_path": "skills/caveman",
-      "revision": "2fd153c67988e980fb0b2455c90832159a6a5a25",
-      "license": "MIT for the copied skill; root notice at third-party/licenses/caveman-LICENSE. Engine/runtime components are not included.",
+      "revision": "bad48a0e1df55e05e3f52249afa35ecc1909ee76",
+      "license": "Apache-2.0 for the current repository; root licence, NOTICE, prior MIT notice, and licensing history retained at third-party/licenses/caveman-{LICENSE,NOTICE,LICENSE-MIT,LICENSING.md}.",
       "local_path": "third-party/skills/caveman",
       "installation": null,
-      "local_changes": []
+      "local_changes": [],
+      "last_reviewed": {
+        "date": "2026-10-18",
+        "upstream_revision": "bad48a0e1df55e05e3f52249afa35ecc1909ee76",
+        "content_matches": true
+      },
+      "license_files": [
+        {
+          "source_path": "LICENSE",
+          "local_path": "third-party/licenses/caveman-LICENSE"
+        },
+        {
+          "source_path": "NOTICE",
+          "local_path": "third-party/licenses/caveman-NOTICE"
+        },
+        {
+          "source_path": "LICENSE-MIT",
+          "local_path": "third-party/licenses/caveman-LICENSE-MIT"
+        },
+        {
+          "source_path": "LICENSING.md",
+          "local_path": "third-party/licenses/caveman-LICENSING.md"
+        }
+      ]
     },
     {
       "name": "ponytail",
       "mode": "copy",
       "source_url": "https://github.com/DietrichGebert/ponytail",
       "source_path": "skills/ponytail",
-      "revision": "2ed6c52c9d7e5e56942508591085fd45dea277d3",
+      "revision": "09c434ab73ca43761c5d8b0c5d341926c2fba710",
       "license": "MIT; root notice at third-party/licenses/ponytail-LICENSE.",
       "local_path": "third-party/skills/ponytail",
       "installation": null,
-      "local_changes": []
+      "local_changes": [],
+      "last_reviewed": {
+        "date": "2026-10-18",
+        "upstream_revision": "09c434ab73ca43761c5d8b0c5d341926c2fba710",
+        "content_matches": true
+      }
     },
     {
       "name": "vercel-react-best-practices",
@@ -64,7 +129,13 @@
       "license": "MIT as declared upstream; see third-party/licenses/vercel-agent-skills.md. Author metadata retained.",
       "local_path": "third-party/skills/vercel-react-best-practices",
       "installation": null,
-      "local_changes": []
+      "local_changes": [],
+      "last_reviewed": {
+        "date": "2026-10-18",
+        "upstream_revision": "063bee94c3f4df8453406c830b0a7df0f2860278",
+        "content_matches": true
+      },
+      "upstream_notes": "Three AGENTS.md links omit the rules/ prefix: async-defer-await.md, async-cheap-condition-before-await.md, and server-hoist-static-io.md. Targets exist under rules/; copied files remain unchanged."
     },
     {
       "name": "web-design-guidelines",
@@ -76,7 +147,12 @@
       "local_path": "third-party/skills/web-design-guidelines",
       "installation": null,
       "local_changes": [],
-      "upstream_notes": "Fetches https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md when used. That live document is not pinned."
+      "upstream_notes": "Fetches https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md when used. That live document is not pinned.",
+      "last_reviewed": {
+        "date": "2026-10-18",
+        "upstream_revision": "063bee94c3f4df8453406c830b0a7df0f2860278",
+        "content_matches": true
+      }
     },
     {
       "name": "vercel-cli",
@@ -87,18 +163,28 @@
       "license": "Apache-2.0; root notice at third-party/licenses/vercel-LICENSE.",
       "local_path": "third-party/skills/vercel-cli",
       "installation": null,
-      "local_changes": []
+      "local_changes": [],
+      "last_reviewed": {
+        "date": "2026-10-18",
+        "upstream_revision": "c628be7835e03a965b93e9cf9e2bd5ac2acbf5eb",
+        "content_matches": true
+      }
     },
     {
       "name": "test-driven-development",
       "mode": "copy",
       "source_url": "https://github.com/obra/superpowers",
       "source_path": "skills/test-driven-development",
-      "revision": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797",
+      "revision": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "license": "MIT; upstream root notice at third-party/licenses/superpowers-LICENSE.",
       "local_path": "third-party/skills/test-driven-development",
       "installation": null,
-      "local_changes": []
+      "local_changes": [],
+      "last_reviewed": {
+        "date": "2026-10-18",
+        "upstream_revision": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
+        "content_matches": true
+      }
     },
     {
       "name": "verification-before-completion",
@@ -109,18 +195,28 @@
       "license": "MIT; upstream root notice at third-party/licenses/superpowers-LICENSE.",
       "local_path": "third-party/skills/verification-before-completion",
       "installation": null,
-      "local_changes": []
+      "local_changes": [],
+      "last_reviewed": {
+        "date": "2026-10-18",
+        "upstream_revision": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
+        "content_matches": true
+      }
     },
     {
       "name": "requesting-code-review",
       "mode": "copy",
       "source_url": "https://github.com/obra/superpowers",
       "source_path": "skills/requesting-code-review",
-      "revision": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797",
+      "revision": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "license": "MIT; upstream root notice at third-party/licenses/superpowers-LICENSE.",
       "local_path": "third-party/skills/requesting-code-review",
       "installation": null,
-      "local_changes": []
+      "local_changes": [],
+      "last_reviewed": {
+        "date": "2026-10-18",
+        "upstream_revision": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
+        "content_matches": true
+      }
     },
     {
       "name": "playwright-best-practices",
@@ -132,7 +228,82 @@
       "local_path": "third-party/skills/playwright-best-practices",
       "installation": null,
       "local_changes": [],
-      "upstream_notes": "Seven relative-link occurrences in secondary guides omit sibling-folder prefixes at this revision. Resolve through the main SKILL.md reference map: targets exist under debugging/error-testing.md, browser-apis/service-workers.md, core/assertions-waiting.md and core/fixtures-hooks.md. Imported files are unchanged."
+      "upstream_notes": "Seven relative-link occurrences in secondary guides omit sibling-folder prefixes at this revision. Resolve through the main SKILL.md reference map: targets exist under debugging/error-testing.md, browser-apis/service-workers.md, core/assertions-waiting.md and core/fixtures-hooks.md. Imported files are unchanged.",
+      "last_reviewed": {
+        "date": "2026-10-18",
+        "upstream_revision": "283d5cbc5d11aac1abda058b16ad22c317d54dc0",
+        "content_matches": true
+      }
+    },
+    {
+      "name": "ultracave",
+      "mode": "copy",
+      "source_url": "https://github.com/JuliusBrussee/caveman",
+      "source_path": "skills/ultracave",
+      "license": "Apache-2.0 for the current repository; root licence, NOTICE, prior MIT notice, and licensing history retained at third-party/licenses/caveman-{LICENSE,NOTICE,LICENSE-MIT,LICENSING.md}.",
+      "local_path": "third-party/skills/ultracave",
+      "installation": null,
+      "local_changes": [],
+      "revision": "bad48a0e1df55e05e3f52249afa35ecc1909ee76",
+      "last_reviewed": {
+        "date": "2026-10-18",
+        "upstream_revision": "bad48a0e1df55e05e3f52249afa35ecc1909ee76",
+        "content_matches": true
+      },
+      "upstream_notes": "README.md links ../../docs/HONEST-NUMBERS.md in the full upstream repository, outside this copied skill subtree. SKILL.md is self-contained; engine hooks/runtime are not installed. Upstream disable-model-invocation frontmatter is retained unchanged.",
+      "license_files": [
+        {
+          "source_path": "LICENSE",
+          "local_path": "third-party/licenses/caveman-LICENSE"
+        },
+        {
+          "source_path": "NOTICE",
+          "local_path": "third-party/licenses/caveman-NOTICE"
+        },
+        {
+          "source_path": "LICENSE-MIT",
+          "local_path": "third-party/licenses/caveman-LICENSE-MIT"
+        },
+        {
+          "source_path": "LICENSING.md",
+          "local_path": "third-party/licenses/caveman-LICENSING.md"
+        }
+      ]
+    },
+    {
+      "name": "megacave",
+      "mode": "copy",
+      "source_url": "https://github.com/JuliusBrussee/caveman",
+      "source_path": "skills/megacave",
+      "license": "Apache-2.0 for the current repository; root licence, NOTICE, prior MIT notice, and licensing history retained at third-party/licenses/caveman-{LICENSE,NOTICE,LICENSE-MIT,LICENSING.md}.",
+      "local_path": "third-party/skills/megacave",
+      "installation": null,
+      "local_changes": [],
+      "revision": "bad48a0e1df55e05e3f52249afa35ecc1909ee76",
+      "last_reviewed": {
+        "date": "2026-10-18",
+        "upstream_revision": "bad48a0e1df55e05e3f52249afa35ecc1909ee76",
+        "content_matches": true
+      },
+      "upstream_notes": "README.md links ../../docs/HONEST-NUMBERS.md in the full upstream repository, outside this copied skill subtree. SKILL.md is self-contained; engine hooks/runtime are not installed. Upstream disable-model-invocation frontmatter is retained unchanged.",
+      "license_files": [
+        {
+          "source_path": "LICENSE",
+          "local_path": "third-party/licenses/caveman-LICENSE"
+        },
+        {
+          "source_path": "NOTICE",
+          "local_path": "third-party/licenses/caveman-NOTICE"
+        },
+        {
+          "source_path": "LICENSE-MIT",
+          "local_path": "third-party/licenses/caveman-LICENSE-MIT"
+        },
+        {
+          "source_path": "LICENSING.md",
+          "local_path": "third-party/licenses/caveman-LICENSING.md"
+        }
+      ]
     }
   ]
 }

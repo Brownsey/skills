@@ -99,17 +99,19 @@ Exact revisions and licences are recorded in [third-party/sources.json](third-pa
 
 | Skill | Source |
 | --- | --- |
-| Archify | [tt-a1i/archify](https://github.com/tt-a1i/archify/tree/2ab3cae7ac2c2a55d7386ca789d03c4fcd31816c/archify) |
-| Animate | [emilkowalski/skills](https://github.com/emilkowalski/skills/tree/d23d7f88a2e21c9e4b1418c7abe420f5c1052ba7/skills/animate) |
-| Frontend Design | [anthropics/skills](https://github.com/anthropics/skills/tree/53048666b05b4799081517d00e09e0a2dd688678/skills/frontend-design) |
-| Caveman | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/df2ccd85c94ec3c8289cb62ac020d241ccfb0c60/skills/caveman) |
-| Ponytail | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/2ed6c52c9d7e5e56942508591085fd45dea277d3/skills/ponytail) |
+| Archify | [tt-a1i/archify](https://github.com/tt-a1i/archify/tree/208acba8d412335185b2056fedf54b3405df43fb/archify) |
+| Animate | [emilkowalski/skills](https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202/skills/animate) |
+| Frontend Design | [anthropics/skills](https://github.com/anthropics/skills/tree/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/frontend-design) |
+| Caveman | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/bad48a0e1df55e05e3f52249afa35ecc1909ee76/skills/caveman) |
+| Ultracave (Caveman ultra mode) | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/bad48a0e1df55e05e3f52249afa35ecc1909ee76/skills/ultracave) |
+| Megacave (Caveman Classical Chinese mode) | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/bad48a0e1df55e05e3f52249afa35ecc1909ee76/skills/megacave) |
+| Ponytail | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/09c434ab73ca43761c5d8b0c5d341926c2fba710/skills/ponytail) |
 | Vercel React Best Practices | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/063bee94c3f4df8453406c830b0a7df0f2860278/skills/react-best-practices) |
 | Web Design Guidelines | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/063bee94c3f4df8453406c830b0a7df0f2860278/skills/web-design-guidelines) |
-| Vercel CLI | [vercel/vercel](https://github.com/vercel/vercel/tree/e06cc643cec6a47bd9344af7f4589c736d95ed15/skills/vercel-cli) |
-| Test-Driven Development | [obra/superpowers](https://github.com/obra/superpowers/tree/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/skills/test-driven-development) |
+| Vercel CLI | [vercel/vercel](https://github.com/vercel/vercel/tree/c628be7835e03a965b93e9cf9e2bd5ac2acbf5eb/skills/vercel-cli) |
+| Test-Driven Development | [obra/superpowers](https://github.com/obra/superpowers/tree/bb92a77741419a4ab5f06e711a283343f1ada0c3/skills/test-driven-development) |
 | Verification Before Completion | [obra/superpowers](https://github.com/obra/superpowers/tree/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/skills/verification-before-completion) |
-| Requesting Code Review | [obra/superpowers](https://github.com/obra/superpowers/tree/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/skills/requesting-code-review) |
+| Requesting Code Review | [obra/superpowers](https://github.com/obra/superpowers/tree/bb92a77741419a4ab5f06e711a283343f1ada0c3/skills/requesting-code-review) |
 | Playwright Best Practices | [currents-dev/playwright-best-practices-skill](https://github.com/currents-dev/playwright-best-practices-skill/tree/283d5cbc5d11aac1abda058b16ad22c317d54dc0/playwright-best-practices) |
 
 ## Add or update a skill
