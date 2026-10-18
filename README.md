@@ -78,15 +78,20 @@ Existing skill edits are visible through their links immediately. Run the instal
 
 Original skills:
 
-- [`fullstack-delivery`](skills/fullstack-delivery/SKILL.md) — profiles and [launch prompt](skills/fullstack-delivery/references/launch-prompt.md)
-- [`fullstack-efficient`](skills/fullstack-efficient/SKILL.md) — token-first model, context and dispatch overlay: Astra 6 for architecture, Sol 6 for other substantive work, and Luna 6 for bounded mechanical work
-- [`independent-validation`](skills/independent-validation/SKILL.md) — risk-based lead checks, combined independent passes, or separate validators plus final review
+- [`efficiency-implementation`](skills/efficiency-implementation/SKILL.md) — default development overlay: Sol 6.1 for every code-related role, Luna readers reporting sourced findings to the orchestrator
+- [`fullstack-delivery`](skills/fullstack-delivery/SKILL.md) — profiles, Luna research, Sol 6.1 implementation, Astra architecture/code review, and [launch prompt](skills/fullstack-delivery/references/launch-prompt.md)
+- [`fullstack-efficient`](skills/fullstack-efficient/SKILL.md) — token-first context and dispatch overlay with the same model roles
+- [`independent-validation`](skills/independent-validation/SKILL.md) — risk-based lead checks, Astra combined review, or independent Sol validators plus a distinct Astra final reviewer
 - [`tokenomics-audit`](skills/tokenomics-audit/SKILL.md) — explicit or scheduled audits of measured usage, structural waste, rework, and cost per accepted outcome
 - [`hexagonal-architecture`](skills/hexagonal-architecture/SKILL.md)
 - [`personal-skill-library`](skills/personal-skill-library/SKILL.md)
 - [`python-quality`](skills/python-quality/SKILL.md)
 
 Archify creates validated, interactive architecture, workflow, sequence, data-flow and lifecycle diagrams from repository evidence or system descriptions. Shared instructions route architecture requests through it while preserving `hexagonal-architecture` for applicable code-boundary decisions.
+
+Shared instructions load `efficiency-implementation` by default across development tasks. `gpt-6-luna` readers research and report sources and uncertainty to the orchestrator; `gpt-6.1-sol` owns all code-related roles, including orchestration, architecture, check execution, validation, and review. This overlay supersedes the older Astra assignments described in the base skills above while preserving independent validators/reviewers and their risk gates. Integral instruction/source inspection stays with the implementer or reviewer. Runtime restrictions and unavailable-model reporting still apply.
+
+Skill instructions route work; they cannot change the running model. On each device, set `model = "gpt-6.1-sol"` at the top level of the local Codex `config.toml`. Add `default_subagent_model = "gpt-6.1-sol"` inside its existing `[agents]` table for the fallback; reader dispatch explicitly selects `gpt-6-luna`. Preserve other settings and explicit project or task overrides. The skill installer does not edit model configuration.
 
 ## Upstream skill sources
 
