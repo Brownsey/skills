@@ -29,7 +29,7 @@ codex mcp get vercel
 codex mcp list
 ```
 
-To allow up to 25 subagents in each task, add this to `$env:USERPROFILE\.codex\config.toml` on every device, then restart Codex:
+Optional: to allow up to 25 Luna readers in each task, add this to the existing `[agents]` table in `$env:USERPROFILE\.codex\config.toml` on every device, then restart Codex. This is a capacity limit, not a target; the efficiency defaults permit only Luna research subagents:
 
 ```toml
 [agents]
@@ -78,10 +78,10 @@ Existing skill edits are visible through their links immediately. Run the instal
 
 Original skills:
 
-- [`efficiency-implementation`](skills/efficiency-implementation/SKILL.md) — default development overlay: Sol 6.1 for every code-related role, Luna readers reporting sourced findings to the orchestrator
-- [`fullstack-delivery`](skills/fullstack-delivery/SKILL.md) — profiles, Luna research, Sol 6.1 implementation, Astra architecture/code review, and [launch prompt](skills/fullstack-delivery/references/launch-prompt.md)
-- [`fullstack-efficient`](skills/fullstack-efficient/SKILL.md) — token-first context and dispatch overlay with the same model roles
-- [`independent-validation`](skills/independent-validation/SKILL.md) — risk-based lead checks, Astra combined review, or independent Sol validators plus a distinct Astra final reviewer
+- [`efficiency-implementation`](skills/efficiency-implementation/SKILL.md) — default development overlay: all Sol 6.1 code work in the main chat; only Luna research readers use subagents
+- [`fullstack-delivery`](skills/fullstack-delivery/SKILL.md) — profiles, contracts, delivery workflow and [launch prompt](skills/fullstack-delivery/references/launch-prompt.md); efficiency defaults override its worker dispatch
+- [`fullstack-efficient`](skills/fullstack-efficient/SKILL.md) — token-first context policy with main-chat Sol implementation and Luna-only reader delegation
+- [`independent-validation`](skills/independent-validation/SKILL.md) — risk-based checks and review evidence, with an explicit main-chat exception for efficiency mode
 - [`tokenomics-audit`](skills/tokenomics-audit/SKILL.md) — explicit or scheduled audits of measured usage, structural waste, rework, and cost per accepted outcome
 - [`hexagonal-architecture`](skills/hexagonal-architecture/SKILL.md)
 - [`personal-skill-library`](skills/personal-skill-library/SKILL.md)
@@ -89,9 +89,9 @@ Original skills:
 
 Archify creates validated, interactive architecture, workflow, sequence, data-flow and lifecycle diagrams from repository evidence or system descriptions. Shared instructions route architecture requests through it while preserving `hexagonal-architecture` for applicable code-boundary decisions.
 
-Shared instructions load `efficiency-implementation` by default across development tasks. `gpt-6-luna` readers research and report sources and uncertainty to the orchestrator; `gpt-6.1-sol` owns all code-related roles, including orchestration, architecture, check execution, validation, and review. This overlay supersedes the older Astra assignments described in the base skills above while preserving independent validators/reviewers and their risk gates. Integral instruction/source inspection stays with the implementer or reviewer. Runtime restrictions and unavailable-model reporting still apply.
+Shared instructions load `efficiency-implementation` by default across development tasks. `gpt-6.1-sol` performs all planning, architecture, implementation, check execution, validation, and review in the main chat. Only `gpt-6-luna` readers may be subagents; they report sources and uncertainty without editing or running checks. This policy supersedes base worker dispatch and default independent-agent gates while preserving risk-specific evidence. Review is self-review, never claimed independent. A separately mandated independent sign-off is reported as missing rather than bypassing the no-agent policy.
 
-Skill instructions route work; they cannot change the running model. On each device, set `model = "gpt-6.1-sol"` at the top level of the local Codex `config.toml`. Add `default_subagent_model = "gpt-6.1-sol"` inside its existing `[agents]` table for the fallback; reader dispatch explicitly selects `gpt-6-luna`. Preserve other settings and explicit project or task overrides. The skill installer does not edit model configuration.
+Skill instructions route work; they cannot change the running model. On each device, set `model = "gpt-6.1-sol"` at the top level of the local Codex `config.toml`. Set `default_subagent_model = "gpt-6-luna"` inside its existing `[agents]` table, and still explicitly select Luna for reader packets. The fallback does not authorize code delegation. Preserve other settings and explicit project or task overrides. The skill installer does not edit model configuration.
 
 ## Upstream skill sources
 

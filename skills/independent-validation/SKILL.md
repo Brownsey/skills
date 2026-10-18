@@ -7,6 +7,10 @@ description: Choose and run proportionate independent validation and code review
 
 Match independence to change risk. Validate observable requirements, not the implementer's confidence. Preserve repository tooling and use `verification-before-completion` for the final evidence check.
 
+## Main-chat efficiency exception
+
+When `efficiency-implementation` or `fullstack-efficient` is active, follow its explicit main-chat policy instead of this skill's default agent assignments and separation requirements below. Only Luna research readers may be subagents. The main agent performs every risk-specific check and a separate self-review phase; it must not call that independent review or validation. Do not spawn Sol/Astra validators or reviewers to satisfy the default table. Preserve all applicable tests, real-backend, security, permission, migration, and recovery evidence. If a user or application repository separately mandates truly independent sign-off, report that evidence as missing without bypassing the no-agent policy.
+
 ## Choose the gate
 
 Classify the whole change at its highest applicable risk. Record the reason; do not split a coupled risky change into lower-risk labels.
